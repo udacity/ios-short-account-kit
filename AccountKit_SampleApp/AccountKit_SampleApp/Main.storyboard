@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,74 +23,112 @@
             </objects>
             <point key="canvasLocation" x="-719" y="61"/>
         </scene>
-        <!--Climb with Me!-->
+        <!--Surf Connect-->
         <scene sceneID="rVn-AQ-jKL">
             <objects>
-                <viewController title="Climb with Me!" id="D3X-GB-rz9" customClass="LoginViewController" customModule="AccountKit_SampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Surf Connect" id="D3X-GB-rz9" customClass="LoginViewController" customModule="AccountKit_SampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eNa-3X-uZz"/>
                         <viewControllerLayoutGuide type="bottom" id="gE0-UZ-AxJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PUg-Cl-yVG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="womenSurfing_375x667" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-v9-agR"/>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uH3-Q1-4fr">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rockClimbingSilhouette" translatesAutoresizingMaskIntoConstraints="NO" id="uGj-8I-PaK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SURF CONNECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0f-8l-axe">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ou-1n-ka5">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="0kp-DI-3ZA"/>
-                                            <constraint firstAttribute="height" constant="240" id="79s-4H-hcA"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="BoK-WH-e3g"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="O0b-U8-MJv"/>
-                                            <constraint firstAttribute="width" secondItem="uGj-8I-PaK" secondAttribute="height" multiplier="1:1" id="X80-kF-sxl"/>
+                                            <constraint firstAttribute="height" constant="140" id="2Dh-YF-gH6"/>
                                         </constraints>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVA-i4-BoU">
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2Dh-YF-gH6"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="2Dh-YF-gH6"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0z-iS-7yx">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="dfx-Tu-fYy"/>
-                                            <constraint firstAttribute="width" constant="240" id="qqa-Hk-flR"/>
+                                            <constraint firstAttribute="height" constant="50" id="ke9-ll-yj3"/>
                                         </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGA-u4-e1K">
-                                        <state key="normal" title="Log In via Email"/>
-                                        <connections>
-                                            <action selector="loginWithEmail:" destination="D3X-GB-rz9" eventType="touchUpInside" id="piO-s1-PDk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0z-iS-7yx">
-                                        <state key="normal" title="Log In via Phone Number"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="LOG IN WITH PHONE NUMBER">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginWithPhone:" destination="D3X-GB-rz9" eventType="touchUpInside" id="aaw-VQ-CQN"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVA-i4-BoU">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="8Xk-BT-aGW"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8M-Ov-fkw">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="GcH-NF-SOm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="LOG IN WITH EMAIL">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3v-ST-lax">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="xTl-EX-4uQ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDV-5U-bNS">
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="XYK-GH-viQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="CONTINUE WITH FACEBOOK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="PVA-i4-BoU" firstAttribute="top" secondItem="uGj-8I-PaK" secondAttribute="bottom" id="1VL-jo-osa"/>
-                                    <constraint firstItem="JGA-u4-e1K" firstAttribute="top" secondItem="PVA-i4-BoU" secondAttribute="bottom" id="6bV-Jg-sMN"/>
-                                    <constraint firstItem="PVA-i4-BoU" firstAttribute="leading" secondItem="uH3-Q1-4fr" secondAttribute="leading" id="YLc-BT-AIy"/>
-                                    <constraint firstAttribute="trailing" secondItem="PVA-i4-BoU" secondAttribute="trailing" id="ZwR-tR-KA5"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uH3-Q1-4fr" firstAttribute="leading" secondItem="PUg-Cl-yVG" secondAttribute="leadingMargin" constant="16" id="5QR-Um-xWb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qdk-v9-agR" secondAttribute="trailing" constant="-20" id="6VC-Yx-yXg"/>
                             <constraint firstItem="uH3-Q1-4fr" firstAttribute="centerX" secondItem="PUg-Cl-yVG" secondAttribute="centerX" id="C0P-Ce-A56"/>
-                            <constraint firstItem="uH3-Q1-4fr" firstAttribute="centerY" secondItem="PUg-Cl-yVG" secondAttribute="centerY" id="C27-Si-CcA"/>
+                            <constraint firstItem="gE0-UZ-AxJ" firstAttribute="top" secondItem="uH3-Q1-4fr" secondAttribute="bottom" constant="55" id="FRw-T2-yt1"/>
                             <constraint firstItem="uH3-Q1-4fr" firstAttribute="centerX" secondItem="PUg-Cl-yVG" secondAttribute="centerX" id="ZOH-bM-5TR"/>
-                            <constraint firstItem="uH3-Q1-4fr" firstAttribute="centerY" secondItem="PUg-Cl-yVG" secondAttribute="centerY" id="fTp-tJ-HAe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uH3-Q1-4fr" secondAttribute="trailing" constant="16" id="aU4-kZ-FWW"/>
+                            <constraint firstItem="gE0-UZ-AxJ" firstAttribute="top" secondItem="Qdk-v9-agR" secondAttribute="bottom" id="bjR-HP-avK"/>
+                            <constraint firstItem="Qdk-v9-agR" firstAttribute="top" secondItem="PUg-Cl-yVG" secondAttribute="top" id="dfj-Ee-Xb2"/>
+                            <constraint firstItem="Qdk-v9-agR" firstAttribute="leading" secondItem="PUg-Cl-yVG" secondAttribute="leadingMargin" constant="-20" id="mPx-KN-4FA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Climb with me!" id="INh-Sz-1EM"/>
+                    <navigationItem key="navigationItem" title="Surf Connect" id="INh-Sz-1EM" userLabel="Surf Connect"/>
                     <connections>
                         <segue destination="dU0-sI-Oki" kind="show" identifier="showAccount" id="D2B-Zs-3xW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RnH-St-G4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="64.799999999999997" y="60.719640179910051"/>
+            <point key="canvasLocation" x="63.768115942028992" y="60.326086956521742"/>
         </scene>
         <!--Account-->
         <scene sceneID="QjV-mN-TO2">
@@ -102,7 +139,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ojk-HM-S5B"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sg3-HH-eP5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" text="Account ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJn-4U-LIR">
@@ -184,16 +221,17 @@
                         <viewControllerLayoutGuide type="bottom" id="pOv-Yq-oc0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="67d-bv-Qui">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uih-Ma-eRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="380" y="739"/>
         </scene>
     </scenes>
     <resources>
-        <image name="rockClimbingSilhouette" width="500" height="500"/>
+        <image name="womenSurfing_375x667" width="375" height="667"/>
     </resources>
 </document>
