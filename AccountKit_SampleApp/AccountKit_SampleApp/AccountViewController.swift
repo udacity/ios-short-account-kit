@@ -61,6 +61,6 @@ class AccountViewController: UIViewController {
     
     @IBAction func logOut(_ sender: AnyObject){
         accountKit.logOut()
-        navigationController?.popToRootViewController(animated: true)
+        let _ = navigationController?.popToRootViewController(animated: true)
     }
 }
