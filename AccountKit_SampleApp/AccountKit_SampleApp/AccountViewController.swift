@@ -33,6 +33,11 @@ class AccountViewController: UIViewController {
     // MARK: View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 9/255, green: 212/255, blue: 182/255, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor.white
         accountKit.requestAccount { [weak self] (account, error) in
             if let error = error {
                 self?.accountIDLabel.text = "N/A"
@@ -48,12 +53,8 @@ class AccountViewController: UIViewController {
                     self?.titleLabel.text = "Phone Number"
                     self?.valueLabel.text = phoneNumber.stringRepresentation()
                 }
-                
             }
-            
-            
         }
-    
     }
     
   // MARK: Actions
@@ -62,11 +63,4 @@ class AccountViewController: UIViewController {
         accountKit.logOut()
         navigationController?.popToRootViewController(animated: true)
     }
-    
-
-
-    
-
-
-
 }

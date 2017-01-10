@@ -15,6 +15,7 @@
 		ED7EDDF11DEB5B5B00E62017 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDDEF1DEB5B5B00E62017 /* LaunchScreen.storyboard */; };
 		ED7EDE151DEB5B8000E62017 /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7EDE141DEB5B8000E62017 /* AccountKit.framework */; };
 		ED7EDE171DEB5B9600E62017 /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDE161DEB5B9600E62017 /* AccountKitStrings.bundle */; };
+		ED9D19D21E24848500AFFD04 /* UILabel+TextSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		ED7EDE021DEB5B5B00E62017 /* AccountKit_SampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccountKit_SampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7EDE141DEB5B8000E62017 /* AccountKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AccountKit.framework; sourceTree = "<group>"; };
 		ED7EDE161DEB5B9600E62017 /* AccountKitStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AccountKitStrings.bundle; sourceTree = "<group>"; };
+		ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+TextSpacing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				ED7EDDF21DEB5B5B00E62017 /* Info.plist */,
 				ED0496D31DEE76E700D90B9C /* Main.storyboard */,
 				ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */,
+				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
 			);
 			path = AccountKit_SampleApp;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */,
 				ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */,
 				ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */,
+				ED9D19D21E24848500AFFD04 /* UILabel+TextSpacing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,9 @@ import AccountKit
 final class LoginViewController: UIViewController {
 
     // MARK: Properties
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var surfConnectLabel: UILabel!
+    
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
     fileprivate var pendingLoginViewController: AKFViewController? = nil
     fileprivate var showAccountOnAppear = false
@@ -31,10 +34,14 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         showAccountOnAppear = accountKit.currentAccessToken != nil
         pendingLoginViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
+    
+        facebookButton.titleLabel?.addTextSpacing(2.0)
+        surfConnectLabel.addTextSpacing(4.0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if showAccountOnAppear {
             showAccountOnAppear = false
             presentWithSegueIdentifier("showAccount", animated: animated)
@@ -45,7 +52,16 @@ final class LoginViewController: UIViewController {
                 pendingLoginViewController = nil
             }
         }
+    
+        self.navigationController?.isNavigationBarHidden = true
+    
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     
     // MARK: Actions
     @IBAction func loginWithPhone(_ sender: AnyObject) {
