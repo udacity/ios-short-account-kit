@@ -10,6 +10,8 @@
 import Foundation
 import UIKit
 
+// MARK: - UILabel (Text Spacing)
+
 extension UILabel {
     func addTextSpacing(_ spacing: CGFloat){
         let attributedString = NSMutableAttributedString(string: text!)
@@ -17,5 +19,3 @@ extension UILabel {
         attributedText = attributedString
     }
 }
-
-

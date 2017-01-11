@@ -77,6 +77,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A925EC3B1E268E3E00BAEB0C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED7EDDED1DEB5B5B00E62017 /* Assets.xcassets */,
+				ED7EDDF21DEB5B5B00E62017 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A925EC3C1E268E4B00BAEB0C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				ED7EDDEF1DEB5B5B00E62017 /* LaunchScreen.storyboard */,
+				ED0496D31DEE76E700D90B9C /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		ED7EDDDA1DEB5B5A00E62017 = {
 			isa = PBXGroup;
 			children = (
@@ -102,12 +120,10 @@
 			children = (
 				ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */,
 				ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */,
-				ED7EDDED1DEB5B5B00E62017 /* Assets.xcassets */,
-				ED7EDDEF1DEB5B5B00E62017 /* LaunchScreen.storyboard */,
-				ED7EDDF21DEB5B5B00E62017 /* Info.plist */,
-				ED0496D31DEE76E700D90B9C /* Main.storyboard */,
 				ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */,
 				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
+				A925EC3C1E268E4B00BAEB0C /* Storyboards */,
+				A925EC3B1E268E3E00BAEB0C /* Resources */,
 			);
 			path = AccountKit_SampleApp;
 			sourceTree = "<group>";
