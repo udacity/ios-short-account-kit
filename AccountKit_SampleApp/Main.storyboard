@@ -13,7 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="k7j-Sc-ICc">
             <objects>
-                <navigationController id="Hlc-d1-Ko0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNavVC" id="Hlc-d1-Ko0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XkN-3n-eDI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +29,7 @@
         <!--Login View Controller-->
         <scene sceneID="rVn-AQ-jKL">
             <objects>
-                <viewController id="D3X-GB-rz9" customClass="LoginViewController" customModule="AccountKit_SampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="D3X-GB-rz9" customClass="LoginViewController" customModule="AccountKit_SampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eNa-3X-uZz"/>
                         <viewControllerLayoutGuide type="bottom" id="gE0-UZ-AxJ"/>
@@ -51,7 +51,7 @@
                                         <rect key="frame" x="0.0" y="211.66666666666663" width="374" height="95.333333333333371"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="logoSurfConnect" translatesAutoresizingMaskIntoConstraints="NO" id="Tdx-2s-Xrg">
-                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="374" height="55.000000000000028"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="55.000000000000028"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="Pmf-FL-G5L">
                                                         <variation key="heightClass=compact" constant="40"/>
@@ -59,7 +59,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="SURF CONNECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0f-8l-axe">
-                                                <rect key="frame" x="0.0" y="68.333333333333343" width="374" height="27.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="68.000000000000028" width="374" height="27.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -143,7 +143,7 @@
         <!--Account-->
         <scene sceneID="QjV-mN-TO2">
             <objects>
-                <viewController id="dU0-sI-Oki" customClass="AccountViewController" customModule="AccountKit_SampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="accountVC" id="dU0-sI-Oki" customClass="AccountViewController" customModule="AccountKit_SampleApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dIF-kb-CMH"/>
                         <viewControllerLayoutGuide type="bottom" id="ojk-HM-S5B"/>

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A925EC3F1E268EE300BAEB0C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A925EC3D1E268EE300BAEB0C /* LaunchScreen.xib */; };
 		ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */; };
 		ED0496D41DEE76E700D90B9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0496D31DEE76E700D90B9C /* Main.storyboard */; };
 		ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */; };
 		ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */; };
 		ED7EDDEE1DEB5B5B00E62017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDDED1DEB5B5B00E62017 /* Assets.xcassets */; };
-		ED7EDDF11DEB5B5B00E62017 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDDEF1DEB5B5B00E62017 /* LaunchScreen.storyboard */; };
 		ED7EDE151DEB5B8000E62017 /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7EDE141DEB5B8000E62017 /* AccountKit.framework */; };
 		ED7EDE171DEB5B9600E62017 /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDE161DEB5B9600E62017 /* AccountKitStrings.bundle */; };
 		ED9D19D21E24848500AFFD04 /* UILabel+TextSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */; };
@@ -36,13 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A925EC3E1E268EE300BAEB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		ED0496D31DEE76E700D90B9C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ED7EDDE31DEB5B5B00E62017 /* AccountKit_SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountKit_SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED7EDDED1DEB5B5B00E62017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ED7EDDF01DEB5B5B00E62017 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED7EDDF21DEB5B5B00E62017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED7EDDF71DEB5B5B00E62017 /* AccountKit_SampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccountKit_SampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7EDE021DEB5B5B00E62017 /* AccountKit_SampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccountKit_SampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,13 +86,13 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		A925EC3C1E268E4B00BAEB0C /* Storyboards */ = {
+		A925EC3C1E268E4B00BAEB0C /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				ED7EDDEF1DEB5B5B00E62017 /* LaunchScreen.storyboard */,
+				A925EC3D1E268EE300BAEB0C /* LaunchScreen.xib */,
 				ED0496D31DEE76E700D90B9C /* Main.storyboard */,
 			);
-			name = Storyboards;
+			name = Interfaces;
 			sourceTree = "<group>";
 		};
 		ED7EDDDA1DEB5B5A00E62017 = {
@@ -122,7 +122,7 @@
 				ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */,
 				ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */,
 				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
-				A925EC3C1E268E4B00BAEB0C /* Storyboards */,
+				A925EC3C1E268E4B00BAEB0C /* Interfaces */,
 				A925EC3B1E268E3E00BAEB0C /* Resources */,
 			);
 			path = AccountKit_SampleApp;
@@ -237,7 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED7EDDF11DEB5B5B00E62017 /* LaunchScreen.storyboard in Resources */,
+				A925EC3F1E268EE300BAEB0C /* LaunchScreen.xib in Resources */,
 				ED7EDDEE1DEB5B5B00E62017 /* Assets.xcassets in Resources */,
 				ED7EDE171DEB5B9600E62017 /* AccountKitStrings.bundle in Resources */,
 				ED0496D41DEE76E700D90B9C /* Main.storyboard in Resources */,
@@ -302,12 +302,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ED7EDDEF1DEB5B5B00E62017 /* LaunchScreen.storyboard */ = {
+		A925EC3D1E268EE300BAEB0C /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ED7EDDF01DEB5B5B00E62017 /* Base */,
+				A925EC3E1E268EE300BAEB0C /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
