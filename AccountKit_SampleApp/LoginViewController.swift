@@ -19,9 +19,12 @@
 import UIKit
 import AccountKit
 
+// MARK: - LoginViewController: UIViewController
+
 final class LoginViewController: UIViewController {
 
     // MARK: Properties
+    
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var surfConnectLabel: UILabel!
     
@@ -30,6 +33,7 @@ final class LoginViewController: UIViewController {
     fileprivate var showAccountOnAppear = false
     
     // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showAccountOnAppear = accountKit.currentAccessToken != nil
@@ -62,8 +66,8 @@ final class LoginViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    
     // MARK: Actions
+    
     @IBAction func loginWithPhone(_ sender: AnyObject) {
         if let viewController = accountKit.viewControllerForPhoneLogin() as? AKFViewController {
             prepareLoginViewController(viewController)
@@ -82,7 +86,8 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    // MARK: Helper functions
+    // MARK: Helper Functions
+    
     func prepareLoginViewController(_ loginViewController: AKFViewController){
         loginViewController.delegate = self
     }
@@ -99,8 +104,10 @@ final class LoginViewController: UIViewController {
     
 }
 
-// MARK: AKFViewController Delegate extension
+// MARK: - LoginViewController: AKFViewControllerDelegate
+
 extension LoginViewController: AKFViewControllerDelegate {
+    
     func viewController(_ viewController: UIViewController!, didCompleteLoginWith accessToken: AKFAccessToken, state: String!) {
         presentWithSegueIdentifier("showAccount", animated: false)
         
@@ -109,5 +116,4 @@ extension LoginViewController: AKFViewControllerDelegate {
     func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
         print("\(viewController) did fail with error: \(error)")
     }
-    
 }

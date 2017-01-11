@@ -19,6 +19,8 @@
 import UIKit
 import AccountKit
 
+// MARK: - AccountViewController: UIViewController
+
 class AccountViewController: UIViewController {
 
     // MARK: Outlets
@@ -28,9 +30,11 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var valueLabel: UILabel!
     
     // MARK: Properties
+    
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
     
     // MARK: View Life Cycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
@@ -57,10 +61,10 @@ class AccountViewController: UIViewController {
         }
     }
     
-  // MARK: Actions
+    // MARK: Actions
     
     @IBAction func logOut(_ sender: AnyObject){
         accountKit.logOut()
-        navigationController?.popToRootViewController(animated: true)
+        let _ = navigationController?.popToRootViewController(animated: true)
     }
 }

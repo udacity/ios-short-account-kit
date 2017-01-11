@@ -1,9 +1,6 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
-    },
-    {
       "idiom" : "universal",
       "filename" : "logoSurfConnect.png",
       "scale" : "1x"
