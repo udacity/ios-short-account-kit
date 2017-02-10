@@ -42,6 +42,7 @@ class AccountViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
+        
         accountKit.requestAccount { [weak self] (account, error) in
             if let error = error {
                 self?.accountIDLabel.text = "N/A"

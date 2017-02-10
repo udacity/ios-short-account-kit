@@ -17,7 +17,6 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import UIKit
-import AccountKit
 
 // MARK: - LoginViewController: UIViewController
 
@@ -25,19 +24,19 @@ final class LoginViewController: UIViewController {
 
     // MARK: Properties
     
+    // TODO: Declare and initialize showAccountOnAppear
+    // TODO: Declare and initialize dataEntryViewController
+    
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var surfConnectLabel: UILabel!
-    
-    fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
-    fileprivate var pendingLoginViewController: AKFViewController? = nil
-    fileprivate var showAccountOnAppear = false
     
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAccountOnAppear = accountKit.currentAccessToken != nil
-        pendingLoginViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
+        
+     // TODO: Set the value of showAccountOnAppear
+     // TODO: Set the value of dataEntryViewController
     
         facebookButton.titleLabel?.addTextSpacing(2.0)
         surfConnectLabel.addTextSpacing(4.0)
@@ -46,16 +45,10 @@ final class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if showAccountOnAppear {
-            showAccountOnAppear = false
-            presentWithSegueIdentifier("showAccount", animated: animated)
-        } else if let viewController = pendingLoginViewController {
-            prepareLoginViewController(viewController)
-            if let viewController = viewController as? UIViewController {
-                present(viewController, animated: animated, completion: nil)
-                pendingLoginViewController = nil
-            }
-        }
+     // TODO: If showAccountOnAppear is true, present the AccountViewController
+     
+     // TODO: If showAccountOnAppear is false, prepare and present the
+     //       dataEntryViewController
     
         self.navigationController?.isNavigationBarHidden = true
     
@@ -68,52 +61,22 @@ final class LoginViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func loginWithPhone(_ sender: AnyObject) {
-        if let viewController = accountKit.viewControllerForPhoneLogin() as? AKFViewController {
-            prepareLoginViewController(viewController)
-            if let viewController = viewController as? UIViewController {
-                present(viewController, animated: true, completion: nil)
-            }
-        }
-    }
+    // TODO: Add the IBAction, loginWithPhone(_ sender: )
+    // TODO: Add the IBAction, loginWithEmail(_ sender: )
     
-    @IBAction func loginWithEmail(_ sender: AnyObject) {
-        if let viewController = accountKit.viewControllerForEmailLogin() as? AKFViewController {
-            prepareLoginViewController(viewController)
-            if let viewController = viewController as? UIViewController {
-                present(viewController, animated: true, completion: nil)
-            }
-        }
-    }
+
+    // MARK: Helper Methods
     
-    // MARK: Helper Functions
-    
-    func prepareLoginViewController(_ loginViewController: AKFViewController){
-        loginViewController.delegate = self
-    }
+    // TODO: Add the helper method, prepareDataEntryViewController
+    // TODO: Add the helper method, presentWithSegueIdentifier
    
-    fileprivate func presentWithSegueIdentifier(_ segueIdentifier: String, animated: Bool) {
-        if animated {
-                performSegue(withIdentifier: segueIdentifier, sender: nil)
-        } else {
-            UIView.performWithoutAnimation {
-                self.performSegue(withIdentifier: segueIdentifier, sender: nil)
-            }
-        }
-    }
-    
 }
 
 // MARK: - LoginViewController: AKFViewControllerDelegate
 
-extension LoginViewController: AKFViewControllerDelegate {
-    
-    func viewController(_ viewController: UIViewController!, didCompleteLoginWith accessToken: AKFAccessToken, state: String!) {
-        presentWithSegueIdentifier("showAccount", animated: false)
-        
-    }
-    
-    func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
-        print("\(viewController) did fail with error: \(error)")
-    }
-}
+    // TODO: Add the AKFViewControllerDelegate as an extension
+
+    // TODO: Handle callback on successful login
+    // TODO: Handle callback on failed login.
+
+

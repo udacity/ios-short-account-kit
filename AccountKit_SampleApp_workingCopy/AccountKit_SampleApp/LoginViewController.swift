@@ -25,19 +25,20 @@ final class LoginViewController: UIViewController {
 
     // MARK: Properties
     
+    fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
+    fileprivate var authorizationCode = String()
+    fileprivate var dataEntryViewController: AKFViewController? = nil
+    fileprivate var showAccountOnAppear = false
+    
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var surfConnectLabel: UILabel!
-    
-    fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
-    fileprivate var pendingLoginViewController: AKFViewController? = nil
-    fileprivate var showAccountOnAppear = false
     
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showAccountOnAppear = accountKit.currentAccessToken != nil
-        pendingLoginViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
+        dataEntryViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
     
         facebookButton.titleLabel?.addTextSpacing(2.0)
         surfConnectLabel.addTextSpacing(4.0)
@@ -49,11 +50,10 @@ final class LoginViewController: UIViewController {
         if showAccountOnAppear {
             showAccountOnAppear = false
             presentWithSegueIdentifier("showAccount", animated: animated)
-        } else if let viewController = pendingLoginViewController {
-            prepareLoginViewController(viewController)
+        } else if let viewController = dataEntryViewController {
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: animated, completion: nil)
-                pendingLoginViewController = nil
+                dataEntryViewController = nil
             }
         }
     
@@ -70,7 +70,7 @@ final class LoginViewController: UIViewController {
     
     @IBAction func loginWithPhone(_ sender: AnyObject) {
         if let viewController = accountKit.viewControllerForPhoneLogin() as? AKFViewController {
-            prepareLoginViewController(viewController)
+            prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: true, completion: nil)
             }
@@ -79,7 +79,7 @@ final class LoginViewController: UIViewController {
     
     @IBAction func loginWithEmail(_ sender: AnyObject) {
         if let viewController = accountKit.viewControllerForEmailLogin() as? AKFViewController {
-            prepareLoginViewController(viewController)
+            prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: true, completion: nil)
             }
@@ -88,10 +88,10 @@ final class LoginViewController: UIViewController {
     
     // MARK: Helper Functions
     
-    func prepareLoginViewController(_ loginViewController: AKFViewController){
-        loginViewController.delegate = self
+    func prepareDataEntryViewController(_ viewController: AKFViewController){
+        viewController.delegate = self
     }
-   
+    
     fileprivate func presentWithSegueIdentifier(_ segueIdentifier: String, animated: Bool) {
         if animated {
                 performSegue(withIdentifier: segueIdentifier, sender: nil)

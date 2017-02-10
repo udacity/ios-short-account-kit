@@ -88,8 +88,15 @@ final class LoginViewController: UIViewController {
     
     // MARK: Helper Functions
     
-    func prepareLoginViewController(_ loginViewController: AKFViewController){
-        loginViewController.delegate = self
+    func prepareLoginViewController(_ viewController: AKFViewController){
+        viewController.delegate = self
+    
+        let theme = AKFTheme(primaryColor: UIColor.seaGreen(), primaryTextColor: UIColor.mediumGray(), secondaryColor: UIColor.lightGray(), secondaryTextColor: UIColor.mediumGray(), statusBarStyle: .lightContent)
+        
+        theme.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        theme.backgroundImage = #imageLiteral(resourceName: "womenSurfing_375x667")
+        viewController.theme = theme
+    
     }
    
     fileprivate func presentWithSegueIdentifier(_ segueIdentifier: String, animated: Bool) {

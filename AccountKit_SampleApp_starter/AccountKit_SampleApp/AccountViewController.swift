@@ -31,37 +31,35 @@ class AccountViewController: UIViewController {
     
     // MARK: Properties
     
-    fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
+    // TODO: Add the accountKit variable as a property.
     
     // MARK: View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        applyStyling()
+        
+        // TODO: Use the accountKit property to request an account object.
+        
+        // TODO: Populate UILabels for the following cases: error returned, 
+        // account ID with email, account ID with phone number
+        
+    }
+    
+    // MARK: Styling
+    
+    func applyStyling() {
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 9/255, green: 212/255, blue: 182/255, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
-        accountKit.requestAccount { [weak self] (account, error) in
-            if let error = error {
-                self?.accountIDLabel.text = "N/A"
-                self?.titleLabel.text = "Error"
-                self?.valueLabel.text = error.localizedDescription
-            } else {
-                self?.accountIDLabel.text = account?.accountID
-                
-                if let emailAddress = account?.emailAddress, emailAddress.characters.count > 0 {
-                    self?.titleLabel.text = "Email Address"
-                    self?.valueLabel.text = emailAddress
-                } else if let phoneNumber = account?.phoneNumber {
-                    self?.titleLabel.text = "Phone Number"
-                    self?.valueLabel.text = phoneNumber.stringRepresentation()
-                }
-            }
-        }
     }
     
+    
     // MARK: Actions
+    
+    // TODO: Add the IBAction, logOut(_ sender:)
     
     @IBAction func logOut(_ sender: AnyObject){
         accountKit.logOut()

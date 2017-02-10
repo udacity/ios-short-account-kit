@@ -15,6 +15,7 @@
 		ED7EDDEE1DEB5B5B00E62017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDDED1DEB5B5B00E62017 /* Assets.xcassets */; };
 		ED7EDE151DEB5B8000E62017 /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7EDE141DEB5B8000E62017 /* AccountKit.framework */; };
 		ED7EDE171DEB5B9600E62017 /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDE161DEB5B9600E62017 /* AccountKitStrings.bundle */; };
+		ED8741161E4D258000FDE497 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8741151E4D258000FDE497 /* UIColor+CustomColors.swift */; };
 		ED9D19D21E24848500AFFD04 /* UILabel+TextSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		ED7EDE021DEB5B5B00E62017 /* AccountKit_SampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccountKit_SampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7EDE141DEB5B8000E62017 /* AccountKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AccountKit.framework; sourceTree = "<group>"; };
 		ED7EDE161DEB5B9600E62017 /* AccountKitStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AccountKitStrings.bundle; sourceTree = "<group>"; };
+		ED8741151E4D258000FDE497 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
 		ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+TextSpacing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
 				A925EC3C1E268E4B00BAEB0C /* Interfaces */,
 				A925EC3B1E268E3E00BAEB0C /* Resources */,
+				ED8741151E4D258000FDE497 /* UIColor+CustomColors.swift */,
 			);
 			path = AccountKit_SampleApp;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */,
+				ED8741161E4D258000FDE497 /* UIColor+CustomColors.swift in Sources */,
 				ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */,
 				ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */,
 				ED9D19D21E24848500AFFD04 /* UILabel+TextSpacing.swift in Sources */,

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AccountKitClientToken</key>
-    <string>{your-account-kit-client-token}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -50,4 +48,24 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
+</plist>
+
+
+<plist version="1.0">
+    <dict>
+        <key>FacebookAppID</key>
+        <string>{your-app-id}</string>
+        <key>AccountKitClientToken</key>
+        <string>{your-account-kit-client-token}</string>
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>ak{your-app-id}</string>
+                </array>
+            </dict>
+        </array>
+        ...
+    </dict>
 </plist>
