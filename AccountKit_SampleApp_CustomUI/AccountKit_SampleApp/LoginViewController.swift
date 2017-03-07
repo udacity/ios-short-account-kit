@@ -93,6 +93,7 @@ final class LoginViewController: UIViewController {
     
         let theme = AKFTheme(primaryColor: UIColor.seaGreen(), primaryTextColor: UIColor.mediumGray(), secondaryColor: UIColor.lightGray(), secondaryTextColor: UIColor.mediumGray(), statusBarStyle: .lightContent)
         
+        theme.iconColor = UIColor.orange
         theme.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         theme.backgroundImage = #imageLiteral(resourceName: "womenSurfing_375x667")
         viewController.theme = theme

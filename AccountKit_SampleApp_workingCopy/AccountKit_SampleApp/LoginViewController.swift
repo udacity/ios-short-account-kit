@@ -18,6 +18,7 @@
 
 import UIKit
 import AccountKit
+import FBSDKCoreKit
 
 // MARK: - LoginViewController: UIViewController
 
@@ -69,6 +70,7 @@ final class LoginViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func loginWithPhone(_ sender: AnyObject) {
+        FBSDKAppEvents.logEvent("loginWithPhone clicked")
         if let viewController = accountKit.viewControllerForPhoneLogin() as? AKFViewController {
             prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
@@ -78,6 +80,7 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func loginWithEmail(_ sender: AnyObject) {
+        FBSDKAppEvents.logEvent("loginWithEmail clicked")
         if let viewController = accountKit.viewControllerForEmailLogin() as? AKFViewController {
             prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
@@ -85,6 +88,11 @@ final class LoginViewController: UIViewController {
             }
         }
     }
+    
+    // Check it out Hezekiah, here are some fake comments explaining to the students
+    // Something about how some shit works 
+    // This is the most carefull considered comment I've ever written
+    
     
     // MARK: Helper Functions
     
