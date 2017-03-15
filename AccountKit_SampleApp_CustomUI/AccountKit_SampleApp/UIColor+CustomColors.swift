@@ -31,7 +31,7 @@ extension UIColor {
         return UIColor(colorLiteralRed: 125/255, green: 151/255, blue: 173/255, alpha: 1.0)
     }
     
-    static func orange() -> UIColor {
+    static func peach() -> UIColor {
         return UIColor(colorLiteralRed: 252/255, green: 98/255, blue: 64/255, alpha: 1.0)
     }
     

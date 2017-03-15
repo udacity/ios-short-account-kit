@@ -91,15 +91,31 @@ final class LoginViewController: UIViewController {
     func prepareLoginViewController(_ viewController: AKFViewController){
         viewController.delegate = self
     
+//        let theme = AKFTheme(primaryColor: UIColor.seaGreen(), primaryTextColor: UIColor.mediumGray(), secondaryColor: UIColor.lightGray(), secondaryTextColor: UIColor.mediumGray(), statusBarStyle: .lightContent)
+//        
+//        theme.iconColor = UIColor.orange
+//        theme.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        
+        
+        
+        // New with 4.20 Basic UI
+        
+//        viewController.uiManager = AKFSkinManager.init(skinType: AKFSkinType.classic, primaryColor: UIColor.seaGreen(), backgroundImage: #imageLiteral(resourceName: "bg-wave2"), backgroundTint: AKFBackgroundTint.white, tintIntensity: 0.55)
+
+        
+        // New with 4.20 Advanced UI
+        
         let theme = AKFTheme(primaryColor: UIColor.seaGreen(), primaryTextColor: UIColor.mediumGray(), secondaryColor: UIColor.lightGray(), secondaryTextColor: UIColor.mediumGray(), statusBarStyle: .lightContent)
         
-        theme.iconColor = UIColor.orange
-        theme.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-        theme.backgroundImage = #imageLiteral(resourceName: "womenSurfing_375x667")
-        viewController.theme = theme
+        theme.backgroundImage = #imageLiteral(resourceName: "bg-wave2")
+        theme.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        theme.inputBackgroundColor = UIColor.mediumGray()
+        theme.inputTextColor = UIColor.blueGray()
+        viewController.setTheme(theme)
+        
     
     }
-   
+    
     fileprivate func presentWithSegueIdentifier(_ segueIdentifier: String, animated: Bool) {
         if animated {
                 performSegue(withIdentifier: segueIdentifier, sender: nil)
