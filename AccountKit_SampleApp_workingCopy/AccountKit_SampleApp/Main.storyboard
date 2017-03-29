@@ -14,7 +14,7 @@
         <scene sceneID="k7j-Sc-ICc">
             <objects>
                 <navigationController storyboardIdentifier="mainNavVC" id="Hlc-d1-Ko0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XkN-3n-eDI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="XkN-3n-eDI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -103,7 +103,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.0078431372550000003" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDV-5U-bNS">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDV-5U-bNS">
                                         <rect key="frame" x="0.0" y="650" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="13"/>

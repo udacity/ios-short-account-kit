@@ -27,7 +27,6 @@ final class LoginViewController: UIViewController {
     // MARK: Properties
     
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
-    fileprivate var authorizationCode = String()
     fileprivate var dataEntryViewController: AKFViewController? = nil
     fileprivate var showAccountOnAppear = false
     
@@ -89,11 +88,6 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    // Check it out Hezekiah, here are some fake comments explaining to the students
-    // Something about how some shit works 
-    // This is the most carefull considered comment I've ever written
-    
-    
     // MARK: Helper Functions
     
     func prepareDataEntryViewController(_ viewController: AKFViewController){
@@ -109,19 +103,19 @@ final class LoginViewController: UIViewController {
             }
         }
     }
-    
+   
 }
 
 // MARK: - LoginViewController: AKFViewControllerDelegate
-
 extension LoginViewController: AKFViewControllerDelegate {
-    
     func viewController(_ viewController: UIViewController!, didCompleteLoginWith accessToken: AKFAccessToken, state: String!) {
         presentWithSegueIdentifier("showAccount", animated: false)
-        
     }
     
     func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
         print("\(viewController) did fail with error: \(error)")
     }
 }
+
+
+ 
