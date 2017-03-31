@@ -60,7 +60,7 @@ final class LoginViewController: UIViewController {
         loginButton.readPermissions = ["public_profile"]
         
         // Check if user is logged in
-        showProfileOnAppear = FBSDKAccessToken.current() != nil
+        //showProfileOnAppear = FBSDKAccessToken.current() != nil
         
 //        if ((FBSDKAccessToken.current()) != nil) {
 //            presentWithSegueIdentifier("showProfile", animated: false)
@@ -82,14 +82,34 @@ final class LoginViewController: UIViewController {
         }
         
         // Facebook Login
-        if showProfileOnAppear {
-            showProfileOnAppear = false
-            presentWithSegueIdentifier("showProfile", animated: false)
+        if let tokenString = FBSDKAccessToken.current()?.tokenString {
+            print(tokenString)
+        } else {
+            print("token is nil in viewWillAppear")
+        }
+
+        if ((FBSDKAccessToken.current()) != nil) {
+            presentWithSegueIdentifier("showAccount", animated: false)
         }
         
         //Styling
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let tokenString = FBSDKAccessToken.current()?.tokenString {
+            print(tokenString)
+        } else {
+            print("token is nil in viewDidAppear")
+        }
+        
+        if ((FBSDKAccessToken.current()) != nil) {
+            presentWithSegueIdentifier("showAccount", animated: false)
+        }
+        
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -119,8 +139,14 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func goToProfile(_ sender: Any) {
+        if let tokenString = FBSDKAccessToken.current()?.tokenString {
+            print("token is there for goToProfile")
+        } else {
+            print("token is nil in goToProfile")
+        }
+        
         if FBSDKAccessToken.current() != nil {
-            presentWithSegueIdentifier("showProfile", animated: true)
+            presentWithSegueIdentifier("showAccount", animated: true)
         }
     }
     

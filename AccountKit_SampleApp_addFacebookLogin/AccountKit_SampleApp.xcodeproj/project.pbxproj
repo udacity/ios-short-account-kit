@@ -15,7 +15,6 @@
 		ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */; };
 		ED0496D41DEE76E700D90B9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0496D31DEE76E700D90B9C /* Main.storyboard */; };
 		ED1F49201E440F4C00442BD4 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F491F1E440F4C00442BD4 /* UIColor+CustomColors.swift */; };
-		ED40A2C61E7E23E00004AFB3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED40A2C51E7E23E00004AFB3 /* ProfileViewController.swift */; };
 		ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */; };
 		ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */; };
 		ED7EDDEE1DEB5B5B00E62017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7EDDED1DEB5B5B00E62017 /* Assets.xcassets */; };
@@ -49,7 +48,6 @@
 		ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		ED0496D31DEE76E700D90B9C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ED1F491F1E440F4C00442BD4 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
-		ED40A2C51E7E23E00004AFB3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ED7EDDE31DEB5B5B00E62017 /* AccountKit_SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountKit_SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */,
 				ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */,
 				ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */,
-				ED40A2C51E7E23E00004AFB3 /* ProfileViewController.swift */,
 				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
 				A925EC3C1E268E4B00BAEB0C /* Interfaces */,
 				A925EC3B1E268E3E00BAEB0C /* Resources */,
@@ -292,7 +289,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED40A2C61E7E23E00004AFB3 /* ProfileViewController.swift in Sources */,
 				ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */,
 				ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */,
 				ED1F49201E440F4C00442BD4 /* UIColor+CustomColors.swift in Sources */,

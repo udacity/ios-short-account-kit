@@ -18,6 +18,8 @@
 
 import UIKit
 import AccountKit
+import FBSDKLoginKit
+
 
 // MARK: - AccountViewController: UIViewController
 
@@ -38,34 +40,40 @@ class AccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 9/255, green: 212/255, blue: 182/255, alpha: 1.0)
+        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 97/255, green: 114/255, blue: 127/255, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
         
-        accountKit.requestAccount { [weak self] (account, error) in
-            if let error = error {
-                self?.accountIDLabel.text = "N/A"
-                self?.titleLabel.text = "Error"
-                self?.valueLabel.text = error.localizedDescription
-            } else {
-                self?.accountIDLabel.text = account?.accountID
-                
-                if let emailAddress = account?.emailAddress, emailAddress.characters.count > 0 {
-                    self?.titleLabel.text = "Email Address"
-                    self?.valueLabel.text = emailAddress
-                } else if let phoneNumber = account?.phoneNumber {
-                    self?.titleLabel.text = "Phone Number"
-                    self?.valueLabel.text = phoneNumber.stringRepresentation()
-                }
-            }
-        }
+//        accountKit.requestAccount { [weak self] (account, error) in
+//            if let error = error {
+//                self?.accountIDLabel.text = "N/A"
+//                self?.titleLabel.text = "Error"
+//                self?.valueLabel.text = error.localizedDescription
+//            } else {
+//                self?.accountIDLabel.text = account?.accountID
+//                
+//                if let emailAddress = account?.emailAddress, emailAddress.characters.count > 0 {
+//                    self?.titleLabel.text = "Email Address"
+//                    self?.valueLabel.text = emailAddress
+//                } else if let phoneNumber = account?.phoneNumber {
+//                    self?.titleLabel.text = "Phone Number"
+//                    self?.valueLabel.text = phoneNumber.stringRepresentation()
+//                }
+//            }
+//        }
     }
     
     // MARK: Actions
     
-    @IBAction func logOut(_ sender: AnyObject){
-        accountKit.logOut()
-        let _ = navigationController?.popToRootViewController(animated: true)
+//    @IBAction func logOut(_ sender: AnyObject){
+//        accountKit.logOut()
+//        let _ = navigationController?.popToRootViewController(animated: true)
+//    }
+
+    @IBAction func logOut(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
