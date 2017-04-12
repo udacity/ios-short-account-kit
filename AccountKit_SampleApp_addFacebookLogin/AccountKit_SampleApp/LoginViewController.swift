@@ -54,6 +54,7 @@ final class LoginViewController: UIViewController {
         // Create the login button
         let loginButton = FBSDKLoginButton()
         loginButton.center = view.center
+        loginButton.delegate = self
         view.addSubview(loginButton)
     
         // Set read permissions
@@ -62,9 +63,9 @@ final class LoginViewController: UIViewController {
         // Check if user is logged in
         //showProfileOnAppear = FBSDKAccessToken.current() != nil
         
-//        if ((FBSDKAccessToken.current()) != nil) {
-//            presentWithSegueIdentifier("showProfile", animated: false)
-//        }
+        if ((FBSDKAccessToken.current()) != nil) {
+            presentWithSegueIdentifier("showAccount", animated: false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,10 +89,6 @@ final class LoginViewController: UIViewController {
             print("token is nil in viewWillAppear")
         }
 
-        if ((FBSDKAccessToken.current()) != nil) {
-            presentWithSegueIdentifier("showAccount", animated: false)
-        }
-        
         //Styling
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -103,11 +100,6 @@ final class LoginViewController: UIViewController {
         } else {
             print("token is nil in viewDidAppear")
         }
-        
-        if ((FBSDKAccessToken.current()) != nil) {
-            presentWithSegueIdentifier("showAccount", animated: false)
-        }
-        
     }
     
     
@@ -179,5 +171,28 @@ extension LoginViewController: AKFViewControllerDelegate {
     
     func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
         print("\(viewController) did fail with error: \(error)")
+    }
+}
+
+// MARK: - LoginViewController: FBSDKLoginButtonDelegate
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print("Login failed with error: \(error)")
+        }
+
+        // The FBSDKAccessToken is expected to be available, so we can navigate
+        // to the account view controller
+        if result.token != nil {
+            presentWithSegueIdentifier("showAccount", animated: true)
+        } else {
+            print("FBSDK access token not available in loginButton:didCompleteWith:error:")
+        }
+    }
+
+    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        // On logout, we just remain on the login view controller
     }
 }
