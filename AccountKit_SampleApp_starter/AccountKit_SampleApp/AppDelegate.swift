@@ -7,6 +7,8 @@
 //
 
 import UIKit
+// TODO: import CoreKit
+
 
 // MARK: - AppDelegate: UIResponder, UIApplicationDelegate
 
@@ -23,4 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
+
+    // TODO: Activate App Events
+
+
 }

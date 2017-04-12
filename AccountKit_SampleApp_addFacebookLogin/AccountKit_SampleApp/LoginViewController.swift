@@ -31,11 +31,10 @@ final class LoginViewController: UIViewController {
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
     fileprivate var dataEntryViewController: AKFViewController? = nil
     fileprivate var showAccountOnAppear = false
-    fileprivate var showProfileOnAppear = false
     
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var surfConnectLabel: UILabel!
-    @IBOutlet weak var userProfileButton: UIButton!
+
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -56,16 +55,16 @@ final class LoginViewController: UIViewController {
         loginButton.center = view.center
         loginButton.delegate = self
         view.addSubview(loginButton)
-    
-        // Set read permissions
-        loginButton.readPermissions = ["public_profile"]
         
         // Check if user is logged in
-        //showProfileOnAppear = FBSDKAccessToken.current() != nil
-        
         if ((FBSDKAccessToken.current()) != nil) {
             presentWithSegueIdentifier("showAccount", animated: false)
         }
+        
+        // Set read permissions
+        loginButton.readPermissions = ["public_profile"]
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,11 +82,7 @@ final class LoginViewController: UIViewController {
         }
         
         // Facebook Login
-        if let tokenString = FBSDKAccessToken.current()?.tokenString {
-            print(tokenString)
-        } else {
-            print("token is nil in viewWillAppear")
-        }
+
 
         //Styling
         self.navigationController?.isNavigationBarHidden = true
@@ -95,11 +90,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let tokenString = FBSDKAccessToken.current()?.tokenString {
-            print(tokenString)
-        } else {
-            print("token is nil in viewDidAppear")
-        }
+
     }
     
     
@@ -129,19 +120,7 @@ final class LoginViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func goToProfile(_ sender: Any) {
-        if let tokenString = FBSDKAccessToken.current()?.tokenString {
-            print("token is there for goToProfile")
-        } else {
-            print("token is nil in goToProfile")
-        }
         
-        if FBSDKAccessToken.current() != nil {
-            presentWithSegueIdentifier("showAccount", animated: true)
-        }
-    }
-    
     // MARK: Helper Functions
     
     func prepareDataEntryViewController(_ viewController: AKFViewController){
@@ -187,8 +166,6 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
         // to the account view controller
         if result.token != nil {
             presentWithSegueIdentifier("showAccount", animated: true)
-        } else {
-            print("FBSDK access token not available in loginButton:didCompleteWith:error:")
         }
     }
 
