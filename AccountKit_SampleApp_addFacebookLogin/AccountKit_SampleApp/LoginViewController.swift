@@ -63,9 +63,9 @@ final class LoginViewController: UIViewController {
         // Check if user is logged in
         //showProfileOnAppear = FBSDKAccessToken.current() != nil
         
-//        if ((FBSDKAccessToken.current()) != nil) {
-//            presentWithSegueIdentifier("showProfile", animated: false)
-//        }
+        if ((FBSDKAccessToken.current()) != nil) {
+            presentWithSegueIdentifier("showAccount", animated: false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,10 +89,10 @@ final class LoginViewController: UIViewController {
             print("token is nil in viewWillAppear")
         }
 
-        if ((FBSDKAccessToken.current()) != nil) {
-            presentWithSegueIdentifier("showAccount", animated: false)
-        }
-        
+//        if ((FBSDKAccessToken.current()) != nil) {
+//            presentWithSegueIdentifier("showAccount", animated: false)
+//        }
+
         //Styling
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -105,10 +105,9 @@ final class LoginViewController: UIViewController {
             print("token is nil in viewDidAppear")
         }
         
-        if ((FBSDKAccessToken.current()) != nil) {
-            presentWithSegueIdentifier("showAccount", animated: false)
-        }
-        
+//        if ((FBSDKAccessToken.current()) != nil) {
+//            presentWithSegueIdentifier("showAccount", animated: false)
+//        }
     }
     
     
@@ -197,5 +196,7 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
         presentWithSegueIdentifier("showAccount", animated: true)
     }
 
-    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { }
+    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        // On logout, we just remain on the login view controller
+    }
 }
