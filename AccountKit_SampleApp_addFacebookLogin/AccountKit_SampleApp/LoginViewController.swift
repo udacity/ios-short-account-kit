@@ -89,10 +89,6 @@ final class LoginViewController: UIViewController {
             print("token is nil in viewWillAppear")
         }
 
-//        if ((FBSDKAccessToken.current()) != nil) {
-//            presentWithSegueIdentifier("showAccount", animated: false)
-//        }
-
         //Styling
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -104,10 +100,6 @@ final class LoginViewController: UIViewController {
         } else {
             print("token is nil in viewDidAppear")
         }
-        
-//        if ((FBSDKAccessToken.current()) != nil) {
-//            presentWithSegueIdentifier("showAccount", animated: false)
-//        }
     }
     
     
