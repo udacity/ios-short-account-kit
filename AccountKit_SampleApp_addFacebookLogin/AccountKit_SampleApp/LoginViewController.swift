@@ -54,6 +54,7 @@ final class LoginViewController: UIViewController {
         // Create the login button
         let loginButton = FBSDKLoginButton()
         loginButton.center = view.center
+        loginButton.delegate = self
         view.addSubview(loginButton)
     
         // Set read permissions
@@ -180,4 +181,21 @@ extension LoginViewController: AKFViewControllerDelegate {
     func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
         print("\(viewController) did fail with error: \(error)")
     }
+}
+
+// MARK: - LoginViewController: FBSDKLoginButtonDelegate
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print("Login failed with error: \(error)")
+        }
+
+        // The FBSDKAccessToken will be available, so we can navigate to the
+        // account view controller
+        presentWithSegueIdentifier("showAccount", animated: true)
+    }
+
+    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { }
 }
