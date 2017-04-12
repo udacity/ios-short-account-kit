@@ -26,7 +26,8 @@ import FBSDKLoginKit
 class AccountViewController: UIViewController {
 
     // MARK: Outlets
-    
+
+    @IBOutlet weak var accountIDTitleLabel: UILabel!
     @IBOutlet weak var accountIDLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
@@ -64,6 +65,10 @@ class AccountViewController: UIViewController {
                 }
             }
         }
+
+        // Only display account ID labels if after an AccountKit login
+        accountIDTitleLabel.isHidden = !isAccountKitLogin
+        accountIDLabel.isHidden = !isAccountKitLogin
     }
 
     // MARK: Helpers
