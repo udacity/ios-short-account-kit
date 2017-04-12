@@ -183,9 +183,13 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
             print("Login failed with error: \(error)")
         }
 
-        // The FBSDKAccessToken will be available, so we can navigate to the
-        // account view controller
-        presentWithSegueIdentifier("showAccount", animated: true)
+        // The FBSDKAccessToken is expected to be available, so we can navigate
+        // to the account view controller
+        if result.token != nil {
+            presentWithSegueIdentifier("showAccount", animated: true)
+        } else {
+            print("FBSDK access token not available in loginButton:didCompleteWith:error:")
+        }
     }
 
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
