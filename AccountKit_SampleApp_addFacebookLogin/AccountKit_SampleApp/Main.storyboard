@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hlc-d1-Ko0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hlc-d1-Ko0">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -191,7 +191,7 @@
                                     <label hidden="YES" autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Account ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJn-4U-LIR">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="3Fu-QV-zjX"/>
+                                            <constraint firstAttribute="height" priority="990" constant="40" id="3Fu-QV-zjX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                         <color key="textColor" red="0.49019607843137253" green="0.59215686274509804" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -200,7 +200,7 @@
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKb-e5-ao6">
                                         <rect key="frame" x="0.0" y="40" width="382" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Arr-Rj-lRn"/>
+                                            <constraint firstAttribute="height" priority="990" constant="40" id="Arr-Rj-lRn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.3803921569" green="0.44705882349999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -232,7 +232,6 @@
                                     <constraint firstAttribute="trailing" secondItem="dv2-nI-Ugx" secondAttribute="trailing" id="X7i-mM-t4G"/>
                                     <constraint firstItem="NJn-4U-LIR" firstAttribute="leading" secondItem="bSG-Ac-Oli" secondAttribute="leading" id="XzI-ms-Om5"/>
                                     <constraint firstItem="AKb-e5-ao6" firstAttribute="leading" secondItem="bSG-Ac-Oli" secondAttribute="leading" id="doB-cl-7GC"/>
-                                    <constraint firstAttribute="height" constant="160" id="fqy-i4-nsM"/>
                                     <constraint firstAttribute="trailing" secondItem="NJn-4U-LIR" secondAttribute="trailing" id="rql-KI-NDo"/>
                                     <constraint firstItem="GaB-67-I8p" firstAttribute="leading" secondItem="bSG-Ac-Oli" secondAttribute="leading" id="ueg-Wa-PIX"/>
                                 </constraints>
@@ -255,7 +254,6 @@
                         <constraints>
                             <constraint firstItem="Aqz-Uv-ZI0" firstAttribute="top" secondItem="dIF-kb-CMH" secondAttribute="bottom" id="0N1-5K-ADD"/>
                             <constraint firstItem="Aqz-Uv-ZI0" firstAttribute="centerX" secondItem="Sg3-HH-eP5" secondAttribute="centerX" id="30G-4q-49g"/>
-                            <constraint firstItem="l5h-Mj-lim" firstAttribute="top" secondItem="bSG-Ac-Oli" secondAttribute="bottom" priority="990" constant="224" id="6JU-PU-kuD"/>
                             <constraint firstItem="bSG-Ac-Oli" firstAttribute="top" secondItem="Aqz-Uv-ZI0" secondAttribute="bottom" constant="8" id="CEg-Kt-ddf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Aqz-Uv-ZI0" secondAttribute="trailing" constant="-20" id="D0R-hQ-MvA"/>
                             <constraint firstItem="Aqz-Uv-ZI0" firstAttribute="leading" secondItem="Sg3-HH-eP5" secondAttribute="leadingMargin" constant="-20" id="JKE-Qe-TTI"/>
@@ -270,6 +268,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="accountIDLabel" destination="AKb-e5-ao6" id="sns-Xw-ZDO"/>
+                        <outlet property="accountIDTitleLabel" destination="NJn-4U-LIR" id="4MP-o9-bFQ"/>
                         <outlet property="titleLabel" destination="GaB-67-I8p" id="Rh8-tQ-stb"/>
                         <outlet property="valueLabel" destination="dv2-nI-Ugx" id="EMA-IC-0vm"/>
                     </connections>
