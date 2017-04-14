@@ -83,7 +83,6 @@ final class LoginViewController: UIViewController {
         
         // Facebook Login
 
-
         //Styling
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -92,7 +91,6 @@ final class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
 
     }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

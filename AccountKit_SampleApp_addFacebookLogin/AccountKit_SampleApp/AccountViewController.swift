@@ -65,12 +65,24 @@ class AccountViewController: UIViewController {
     }
     
     // MARK: Actions
+    @IBAction func requestMorePermissions(_ sender: Any) {
+        let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
+        
+        fbLoginManager.logIn(withReadPermissions: ["user_friends"], from: self) { (result, error) in
+            
+            if let error = error {
+                print("Login failed with error: \(error)")
+            } else if (result?.isCancelled)!{
+                //Handle cancellation
+            } else {
+                let grantedPermissions = result?.grantedPermissions
+                
+                // Request the data you have been granted permission to access
+                
+            }
+        }
+    }
     
-//    @IBAction func logOut(_ sender: AnyObject){
-//        accountKit.logOut()
-//        let _ = navigationController?.popToRootViewController(animated: true)
-//    }
-
     @IBAction func logOut(_ sender: Any) {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
