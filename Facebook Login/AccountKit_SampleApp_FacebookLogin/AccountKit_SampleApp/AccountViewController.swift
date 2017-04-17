@@ -26,7 +26,8 @@ import FBSDKLoginKit
 class AccountViewController: UIViewController {
 
     // MARK: Outlets
-    
+
+    @IBOutlet weak var accountIDTitleLabel: UILabel!
     @IBOutlet weak var accountIDLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
@@ -34,7 +35,7 @@ class AccountViewController: UIViewController {
     // MARK: Properties
     
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
-    
+
     // MARK: View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,36 +45,54 @@ class AccountViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
-        
-//        accountKit.requestAccount { [weak self] (account, error) in
-//            if let error = error {
-//                self?.accountIDLabel.text = "N/A"
-//                self?.titleLabel.text = "Error"
-//                self?.valueLabel.text = error.localizedDescription
-//            } else {
-//                self?.accountIDLabel.text = account?.accountID
-//                
-//                if let emailAddress = account?.emailAddress, emailAddress.characters.count > 0 {
-//                    self?.titleLabel.text = "Email Address"
-//                    self?.valueLabel.text = emailAddress
-//                } else if let phoneNumber = account?.phoneNumber {
-//                    self?.titleLabel.text = "Phone Number"
-//                    self?.valueLabel.text = phoneNumber.stringRepresentation()
-//                }
-//            }
-//        }
-    }
-    
-    // MARK: Actions
-    
-//    @IBAction func logOut(_ sender: AnyObject){
-//        accountKit.logOut()
-//        let _ = navigationController?.popToRootViewController(animated: true)
-//    }
 
+        if isAccountKitLogin {
+            accountKit.requestAccount { [weak self] (account, error) in
+                if let error = error {
+                    self?.accountIDLabel.text = "N/A"
+                    self?.titleLabel.text = "Error"
+                    self?.valueLabel.text = error.localizedDescription
+                } else {
+                    self?.accountIDLabel.text = account?.accountID
+
+                    if let emailAddress = account?.emailAddress, emailAddress.characters.count > 0 {
+                        self?.titleLabel.text = "Email Address"
+                        self?.valueLabel.text = emailAddress
+                    } else if let phoneNumber = account?.phoneNumber {
+                        self?.titleLabel.text = "Phone Number"
+                        self?.valueLabel.text = phoneNumber.stringRepresentation()
+                    }
+                }
+            }
+        }
+
+        // Only display account ID labels if after an AccountKit login
+        accountIDTitleLabel.isHidden = !isAccountKitLogin
+        accountIDLabel.isHidden = !isAccountKitLogin
+    }
+
+    // MARK: Helpers
+
+    /// A flag indicating the presence of an AccountKit access token
+    fileprivate let isAccountKitLogin: Bool = {
+        return AKFAccountKit(responseType: .accessToken).currentAccessToken != nil
+    }()
+
+    /// A flag indicating the presence of an Facebook SDK access token
+    fileprivate let isFacebookLogin: Bool = {
+        return FBSDKAccessToken.current() != nil
+    }()
+
+    // MARK: Actions
     @IBAction func logOut(_ sender: Any) {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        _ = self.navigationController?.popToRootViewController(animated: true)
+        
+        if isAccountKitLogin {
+            accountKit.logOut()
+            let _ = navigationController?.popToRootViewController(animated: true)
+        } else {
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 }
