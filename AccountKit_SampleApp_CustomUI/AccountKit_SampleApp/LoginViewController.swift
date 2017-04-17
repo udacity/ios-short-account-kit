@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var surfConnectLabel: UILabel!
     
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
-    fileprivate var pendingLoginViewController: AKFViewController? = nil
+    fileprivate var dataEntryViewController: AKFViewController? = nil
     fileprivate var showAccountOnAppear = false
     
     // MARK: View Life Cycle
@@ -37,7 +37,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showAccountOnAppear = accountKit.currentAccessToken != nil
-        pendingLoginViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
+        dataEntryViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
     
         facebookButton.titleLabel?.addTextSpacing(2.0)
         surfConnectLabel.addTextSpacing(4.0)
@@ -49,11 +49,11 @@ final class LoginViewController: UIViewController {
         if showAccountOnAppear {
             showAccountOnAppear = false
             presentWithSegueIdentifier("showAccount", animated: animated)
-        } else if let viewController = pendingLoginViewController {
-            prepareLoginViewController(viewController)
+        } else if let viewController = dataEntryViewController {
+            prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: animated, completion: nil)
-                pendingLoginViewController = nil
+                dataEntryViewController = nil
             }
         }
     
@@ -70,7 +70,7 @@ final class LoginViewController: UIViewController {
     
     @IBAction func loginWithPhone(_ sender: AnyObject) {
         if let viewController = accountKit.viewControllerForPhoneLogin() as? AKFViewController {
-            prepareLoginViewController(viewController)
+            prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: true, completion: nil)
             }
@@ -79,7 +79,7 @@ final class LoginViewController: UIViewController {
     
     @IBAction func loginWithEmail(_ sender: AnyObject) {
         if let viewController = accountKit.viewControllerForEmailLogin() as? AKFViewController {
-            prepareLoginViewController(viewController)
+            prepareDataEntryViewController(viewController)
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: true, completion: nil)
             }
@@ -88,33 +88,20 @@ final class LoginViewController: UIViewController {
     
     // MARK: Helper Functions
     
-    func prepareLoginViewController(_ viewController: AKFViewController){
+    func prepareDataEntryViewController(_ viewController: AKFViewController){
         viewController.delegate = self
     
-//        let theme = AKFTheme(primaryColor: UIColor.seaGreen(), primaryTextColor: UIColor.mediumGray(), secondaryColor: UIColor.lightGray(), secondaryTextColor: UIColor.mediumGray(), statusBarStyle: .lightContent)
+        // Basic UI Customization
+        
+        // Classic skin with no background image
+        viewController.uiManager = AKFSkinManager.init(skinType: AKFSkinType.classic, primaryColor: UIColor.seaGreen())
+//
+//        // Classic skin with background image
+//        // TODO: Comment out the code below to see what the UI looks like without a background image
 //        
-//        theme.iconColor = UIColor.orange
-//        theme.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-        
-        
-        
-        // New with 4.20 Basic UI
-        
-//        viewController.uiManager = AKFSkinManager.init(skinType: AKFSkinType.classic, primaryColor: UIColor.seaGreen(), backgroundImage: #imageLiteral(resourceName: "bg-wave2"), backgroundTint: AKFBackgroundTint.white, tintIntensity: 0.55)
+        viewController.uiManager = AKFSkinManager.init(skinType: AKFSkinType.classic, primaryColor: UIColor.seaGreen(), backgroundImage: #imageLiteral(resourceName: "bg-wave2"), backgroundTint: AKFBackgroundTint.white, tintIntensity: 0.55)
 
-        
-        // New with 4.20 Advanced UI
-        
-        let theme = AKFTheme(primaryColor: UIColor.seaGreen(), primaryTextColor: UIColor.mediumGray(), secondaryColor: UIColor.lightGray(), secondaryTextColor: UIColor.mediumGray(), statusBarStyle: .lightContent)
-        
-        theme.backgroundImage = #imageLiteral(resourceName: "bg-wave2")
-        theme.backgroundColor = UIColor.white.withAlphaComponent(0.0)
-        theme.inputBackgroundColor = UIColor.mediumGray()
-        theme.inputTextColor = UIColor.blueGray()
-        viewController.setTheme(theme)
-        
-    
-    }
+   }
     
     fileprivate func presentWithSegueIdentifier(_ segueIdentifier: String, animated: Bool) {
         if animated {
