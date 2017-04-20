@@ -31,6 +31,8 @@ final class LoginViewController: UIViewController {
     fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
     fileprivate var dataEntryViewController: AKFViewController? = nil
     fileprivate var showAccountOnAppear = false
+
+    fileprivate var profile = Profile(loginType: .none)
     
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var surfConnectLabel: UILabel!
@@ -39,7 +41,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Account Kit
         showAccountOnAppear = accountKit.currentAccessToken != nil
         dataEntryViewController = accountKit.viewControllerForLoginResume() as? AKFViewController
@@ -54,49 +56,39 @@ final class LoginViewController: UIViewController {
         let loginButton = FBSDKLoginButton()
         loginButton.center = view.center
         loginButton.delegate = self
-        view.addSubview(loginButton)
-        
-        // Check if user is logged in
-        if ((FBSDKAccessToken.current()) != nil) {
-            presentWithSegueIdentifier("showAccount", animated: false)
-        }
-        
-        // Set read permissions
         loginButton.readPermissions = ["public_profile"]
-        
-        
+        loginButton.loginBehavior = .systemAccount
+        view.addSubview(loginButton)
+
+        // Check if the user is already logged in
+
+        // Check if user is logged in
+        if let fbToken = FBSDKAccessToken.current() {
+            profile = Profile(token: fbToken)
+            showSurfLocations()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         // AccountKit
         if showAccountOnAppear {
             showAccountOnAppear = false
-            presentWithSegueIdentifier("showAccount", animated: animated)
+            showSurfLocations()
         } else if let viewController = dataEntryViewController {
             if let viewController = viewController as? UIViewController {
                 present(viewController, animated: animated, completion: nil)
                 dataEntryViewController = nil
             }
         }
-        
+
         // Facebook Login
-
-
-        //Styling
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
     }
     
     // MARK: Actions
@@ -122,17 +114,53 @@ final class LoginViewController: UIViewController {
     }
         
     // MARK: Helper Functions
+
+    private func restoreExistingLoginState() {
+        // Check for a Facebook token
+        if let fbToken = FBSDKAccessToken.current() {
+            profile = Profile(token: fbToken)
+            showAccountViewController()
+        }
+    }
     
     func prepareDataEntryViewController(_ viewController: AKFViewController){
         viewController.delegate = self
     }
-    
-    fileprivate func presentWithSegueIdentifier(_ segueIdentifier: String, animated: Bool) {
+
+}
+
+// MARK: - Segues
+
+extension LoginViewController {
+    ///
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let vc = segue.destination as? SurfLocationsViewController {
+            vc.profile = profile
+        }
+    }
+
+    ///
+    fileprivate enum SegueIdentifier: String {
+        case showAccount = "ShowAccount"
+        case showSurfLocations = "ShowSurfLocations"
+    }
+    /// 
+    fileprivate func showAccountViewController() {
+        presentWithSegueIdentifier(.showAccount, animated: true)
+    }
+
+    ///
+    fileprivate func showSurfLocations() {
+        presentWithSegueIdentifier(.showSurfLocations, animated: true)
+    }
+
+    fileprivate func presentWithSegueIdentifier(_ segueIdentifier: SegueIdentifier, animated: Bool) {
         if animated {
-                performSegue(withIdentifier: segueIdentifier, sender: nil)
+                performSegue(withIdentifier: segueIdentifier.rawValue, sender: nil)
         } else {
             UIView.performWithoutAnimation {
-                self.performSegue(withIdentifier: segueIdentifier, sender: nil)
+                self.performSegue(withIdentifier: segueIdentifier.rawValue, sender: nil)
             }
         }
     }
@@ -144,8 +172,8 @@ final class LoginViewController: UIViewController {
 extension LoginViewController: AKFViewControllerDelegate {
     
     func viewController(_ viewController: UIViewController!, didCompleteLoginWith accessToken: AKFAccessToken, state: String!) {
-        presentWithSegueIdentifier("showAccount", animated: false)
-        
+        profile = Profile(token: accessToken)
+        showSurfLocations()
     }
     
     func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
@@ -160,16 +188,19 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if let error = error {
             print("Login failed with error: \(error)")
+            return
         }
 
         // The FBSDKAccessToken is expected to be available, so we can navigate
         // to the account view controller
-        if result.token != nil {
-            presentWithSegueIdentifier("showAccount", animated: true)
+        if let result = result {
+            profile = Profile(token: result.token)
+            showSurfLocations()
         }
     }
 
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        profile = Profile()
         // On logout, we just remain on the login view controller
     }
 }

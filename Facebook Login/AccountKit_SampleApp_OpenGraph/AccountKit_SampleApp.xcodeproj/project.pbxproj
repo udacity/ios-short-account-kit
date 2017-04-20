@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032257671EB77B0D00645D27 /* GraphClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032257661EB77B0D00645D27 /* GraphClient.swift */; };
+		03399B4C1EB2386200057C71 /* SurfLocationsDataSource+HardcodedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03399B4B1EB2386200057C71 /* SurfLocationsDataSource+HardcodedData.swift */; };
+		03399B4E1EB24ADA00057C71 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03399B4D1EB24ADA00057C71 /* Profile.swift */; };
+		03AE46171EB8F35000D9734E /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46161EB8F35000D9734E /* Appearance.swift */; };
+		03AE46191EBA0F5A00D9734E /* FollowFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46181EBA0F5A00D9734E /* FollowFriendsViewController.swift */; };
+		03AE461B1EBA10EC00D9734E /* Profile+OpenGraphHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE461A1EBA10EC00D9734E /* Profile+OpenGraphHelpers.swift */; };
+		03AE461D1EBA176700D9734E /* SurfLocations+Hardcoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE461C1EBA176700D9734E /* SurfLocations+Hardcoded.swift */; };
+		03AE461F1EBA177B00D9734E /* Surfer+Hardcoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE461E1EBA177B00D9734E /* Surfer+Hardcoded.swift */; };
+		03AE46231EBA1F6400D9734E /* Profile+AccountKitHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46221EBA1F6400D9734E /* Profile+AccountKitHelpers.swift */; };
+		03AE46251EBA2A5200D9734E /* VisitorBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46241EBA2A5200D9734E /* VisitorBadge.swift */; };
+		03AE46271EBA62EC00D9734E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE46261EBA62EC00D9734E /* FBSDKShareKit.framework */; };
+		03AF993B1EA92BB9009B1114 /* SurfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF993A1EA92BB9009B1114 /* SurfLocation.swift */; };
+		03AF993D1EA92C2B009B1114 /* Surfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF993C1EA92C2B009B1114 /* Surfer.swift */; };
+		03AF993F1EA931EE009B1114 /* SurfLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF993E1EA931EE009B1114 /* SurfLocationsViewController.swift */; };
+		03AF99411EA93200009B1114 /* SurfLocationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF99401EA93200009B1114 /* SurfLocationsDataSource.swift */; };
+		03BE78F21EA93613007F6ECE /* SurfLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE78F11EA93613007F6ECE /* SurfLocationCell.swift */; };
 		A925EC3F1E268EE300BAEB0C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A925EC3D1E268EE300BAEB0C /* LaunchScreen.xib */; };
 		ED0160E21E6E39BD0056540F /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0160E11E6E39BD0056540F /* AccountKit.framework */; };
 		ED0160E41E6E39CD0056540F /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED0160E31E6E39CD0056540F /* AccountKitStrings.bundle */; };
@@ -40,6 +56,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		032257661EB77B0D00645D27 /* GraphClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphClient.swift; sourceTree = "<group>"; };
+		03399B4B1EB2386200057C71 /* SurfLocationsDataSource+HardcodedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SurfLocationsDataSource+HardcodedData.swift"; sourceTree = "<group>"; };
+		03399B4D1EB24ADA00057C71 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		03AE46161EB8F35000D9734E /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		03AE46181EBA0F5A00D9734E /* FollowFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowFriendsViewController.swift; sourceTree = "<group>"; };
+		03AE461A1EBA10EC00D9734E /* Profile+OpenGraphHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+OpenGraphHelpers.swift"; sourceTree = "<group>"; };
+		03AE461C1EBA176700D9734E /* SurfLocations+Hardcoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SurfLocations+Hardcoded.swift"; sourceTree = "<group>"; };
+		03AE461E1EBA177B00D9734E /* Surfer+Hardcoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Surfer+Hardcoded.swift"; sourceTree = "<group>"; };
+		03AE46221EBA1F6400D9734E /* Profile+AccountKitHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+AccountKitHelpers.swift"; sourceTree = "<group>"; };
+		03AE46241EBA2A5200D9734E /* VisitorBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorBadge.swift; sourceTree = "<group>"; };
+		03AE46261EBA62EC00D9734E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		03AF993A1EA92BB9009B1114 /* SurfLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfLocation.swift; sourceTree = "<group>"; };
+		03AF993C1EA92C2B009B1114 /* Surfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Surfer.swift; sourceTree = "<group>"; };
+		03AF993E1EA931EE009B1114 /* SurfLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfLocationsViewController.swift; sourceTree = "<group>"; };
+		03AF99401EA93200009B1114 /* SurfLocationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfLocationsDataSource.swift; sourceTree = "<group>"; };
+		03BE78F11EA93613007F6ECE /* SurfLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfLocationCell.swift; sourceTree = "<group>"; };
 		A925EC3E1E268EE300BAEB0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ED0160E11E6E39BD0056540F /* AccountKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AccountKit.framework; sourceTree = "<group>"; };
 		ED0160E31E6E39CD0056540F /* AccountKitStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AccountKitStrings.bundle; sourceTree = "<group>"; };
@@ -66,6 +98,7 @@
 			files = (
 				ED0160E21E6E39BD0056540F /* AccountKit.framework in Frameworks */,
 				ED0160E81E6E39EF0056540F /* FBSDKCoreKit.framework in Frameworks */,
+				03AE46271EBA62EC00D9734E /* FBSDKShareKit.framework in Frameworks */,
 				ED7FF4771E79F6D400E1AFF3 /* FBSDKLoginKit.framework in Frameworks */,
 				ED0160E61E6E39E00056540F /* Bolts.framework in Frameworks */,
 			);
@@ -88,6 +121,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03399B4F1EB24CDD00057C71 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03399B4D1EB24ADA00057C71 /* Profile.swift */,
+				03AE461A1EBA10EC00D9734E /* Profile+OpenGraphHelpers.swift */,
+				03AE46221EBA1F6400D9734E /* Profile+AccountKitHelpers.swift */,
+				03AF993C1EA92C2B009B1114 /* Surfer.swift */,
+				03AE461E1EBA177B00D9734E /* Surfer+Hardcoded.swift */,
+				03AF993A1EA92BB9009B1114 /* SurfLocation.swift */,
+				03AE461C1EBA176700D9734E /* SurfLocations+Hardcoded.swift */,
+				032257661EB77B0D00645D27 /* GraphClient.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		03399B501EB24CED00057C71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03BE78F11EA93613007F6ECE /* SurfLocationCell.swift */,
+				03AE46241EBA2A5200D9734E /* VisitorBadge.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		03399B511EB24CF500057C71 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */,
+				ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */,
+				03AE46201EBA1EB400D9734E /* SurfLocations */,
+				03AE46211EBA1ECD00D9734E /* FollowFriends */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		03399B521EB24D4500057C71 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
+				ED1F491F1E440F4C00442BD4 /* UIColor+CustomColors.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		03AE46201EBA1EB400D9734E /* SurfLocations */ = {
+			isa = PBXGroup;
+			children = (
+				03AF993E1EA931EE009B1114 /* SurfLocationsViewController.swift */,
+				03AF99401EA93200009B1114 /* SurfLocationsDataSource.swift */,
+				03399B4B1EB2386200057C71 /* SurfLocationsDataSource+HardcodedData.swift */,
+			);
+			name = SurfLocations;
+			sourceTree = "<group>";
+		};
+		03AE46211EBA1ECD00D9734E /* FollowFriends */ = {
+			isa = PBXGroup;
+			children = (
+				03AE46181EBA0F5A00D9734E /* FollowFriendsViewController.swift */,
+			);
+			name = FollowFriends;
+			sourceTree = "<group>";
+		};
 		A925EC3B1E268E3E00BAEB0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +204,7 @@
 		ED1F49161E44094800442BD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03AE46261EBA62EC00D9734E /* FBSDKShareKit.framework */,
 				ED7FF4761E79F6D400E1AFF3 /* FBSDKLoginKit.framework */,
 				ED0160E71E6E39EF0056540F /* FBSDKCoreKit.framework */,
 				ED0160E51E6E39E00056540F /* Bolts.framework */,
@@ -141,12 +237,13 @@
 			isa = PBXGroup;
 			children = (
 				ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */,
-				ED7EDDE81DEB5B5B00E62017 /* LoginViewController.swift */,
-				ED0496D11DEE4E2300D90B9C /* AccountViewController.swift */,
-				ED9D19D11E24848500AFFD04 /* UILabel+TextSpacing.swift */,
+				03AE46161EB8F35000D9734E /* Appearance.swift */,
+				03399B4F1EB24CDD00057C71 /* Model */,
+				03399B501EB24CED00057C71 /* View */,
+				03399B511EB24CF500057C71 /* Controller */,
+				03399B521EB24D4500057C71 /* Common */,
 				A925EC3C1E268E4B00BAEB0C /* Interfaces */,
 				A925EC3B1E268E3E00BAEB0C /* Resources */,
-				ED1F491F1E440F4C00442BD4 /* UIColor+CustomColors.swift */,
 			);
 			path = AccountKit_SampleApp;
 			sourceTree = "<group>";
@@ -219,7 +316,7 @@
 				TargetAttributes = {
 					ED7EDDE21DEB5B5A00E62017 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4Y6798AS3R;
+						DevelopmentTeam = 8RNGB2AAZL;
 						ProvisioningStyle = Automatic;
 					};
 					ED7EDDF61DEB5B5B00E62017 = {
@@ -289,10 +386,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03BE78F21EA93613007F6ECE /* SurfLocationCell.swift in Sources */,
+				03AE461D1EBA176700D9734E /* SurfLocations+Hardcoded.swift in Sources */,
+				032257671EB77B0D00645D27 /* GraphClient.swift in Sources */,
+				03AE46231EBA1F6400D9734E /* Profile+AccountKitHelpers.swift in Sources */,
+				03399B4E1EB24ADA00057C71 /* Profile.swift in Sources */,
 				ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */,
+				03AF99411EA93200009B1114 /* SurfLocationsDataSource.swift in Sources */,
+				03AE46191EBA0F5A00D9734E /* FollowFriendsViewController.swift in Sources */,
+				03AE46251EBA2A5200D9734E /* VisitorBadge.swift in Sources */,
 				ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */,
+				03399B4C1EB2386200057C71 /* SurfLocationsDataSource+HardcodedData.swift in Sources */,
 				ED1F49201E440F4C00442BD4 /* UIColor+CustomColors.swift in Sources */,
 				ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */,
+				03AF993D1EA92C2B009B1114 /* Surfer.swift in Sources */,
+				03AF993B1EA92BB9009B1114 /* SurfLocation.swift in Sources */,
+				03AE461F1EBA177B00D9734E /* Surfer+Hardcoded.swift in Sources */,
+				03AE461B1EBA10EC00D9734E /* Profile+OpenGraphHelpers.swift in Sources */,
+				03AE46171EB8F35000D9734E /* Appearance.swift in Sources */,
+				03AF993F1EA931EE009B1114 /* SurfLocationsViewController.swift in Sources */,
 				ED9D19D21E24848500AFFD04 /* UILabel+TextSpacing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,14 +547,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4Y6798AS3R;
+				DEVELOPMENT_TEAM = 8RNGB2AAZL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AccountKit_SampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.AccountKitSampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshsvatek.AccountKitSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -452,14 +564,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4Y6798AS3R;
+				DEVELOPMENT_TEAM = 8RNGB2AAZL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AccountKit_SampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.AccountKitSampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshsvatek.AccountKitSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -34,65 +34,45 @@ class AccountViewController: UIViewController {
     
     // MARK: Properties
     
-    fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
+    var profile: Profile!
 
     // MARK: View Life Cycle
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 97/255, green: 114/255, blue: 127/255, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController?.navigationBar.tintColor = UIColor.white
 
-        if isAccountKitLogin {
-            accountKit.requestAccount { [weak self] (account, error) in
-                if let error = error {
-                    self?.accountIDLabel.text = "N/A"
-                    self?.titleLabel.text = "Error"
-                    self?.valueLabel.text = error.localizedDescription
-                } else {
-                    self?.accountIDLabel.text = account?.accountID
+        navigationController?.setNavigationBarHidden(false, animated: false)
 
-                    if let emailAddress = account?.emailAddress, emailAddress.characters.count > 0 {
-                        self?.titleLabel.text = "Email Address"
-                        self?.valueLabel.text = emailAddress
-                    } else if let phoneNumber = account?.phoneNumber {
-                        self?.titleLabel.text = "Phone Number"
-                        self?.valueLabel.text = phoneNumber.stringRepresentation()
-                    }
-                }
+//
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 97/255, green: 114/255, blue: 127/255, alpha: 1.0)
+//        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
+//        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+//        navigationController?.navigationBar.tintColor = UIColor.white
+
+        accountIDTitleLabel.isHidden = !profile.isDataLoaded
+        accountIDLabel.isHidden = !profile.isDataLoaded
+
+        if profile.isDataLoaded == false {
+            titleLabel.text = "Error"
+        } else if profile.isAccountKitLogin {
+            if let emailAddress = profile.data?.email, !emailAddress.isEmpty {
+                titleLabel.text = "Email Address"
+                valueLabel.text = emailAddress
+            } else if let phoneNumber = profile.data?.phone, !phoneNumber.isEmpty {
+                titleLabel.text = "Phone Number"
+                valueLabel.text = phoneNumber
             }
+        } else if profile.isFacebookLogin {
+            // ...
         }
 
         // Only display account ID labels if after an AccountKit login
-        accountIDTitleLabel.isHidden = !isAccountKitLogin
-        accountIDLabel.isHidden = !isAccountKitLogin
     }
-
-    // MARK: Helpers
-
-    /// A flag indicating the presence of an AccountKit access token
-    fileprivate let isAccountKitLogin: Bool = {
-        return AKFAccountKit(responseType: .accessToken).currentAccessToken != nil
-    }()
-
-    /// A flag indicating the presence of an Facebook SDK access token
-    fileprivate let isFacebookLogin: Bool = {
-        return FBSDKAccessToken.current() != nil
-    }()
 
     // MARK: Actions
     @IBAction func logOut(_ sender: Any) {
-        
-        if isAccountKitLogin {
-            accountKit.logOut()
-            let _ = navigationController?.popToRootViewController(animated: true)
-        } else {
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            _ = self.navigationController?.popToRootViewController(animated: true)
-        }
+        profile.logOut()
+        let _ = navigationController?.popToRootViewController(animated: true)
     }
 }
