@@ -83,16 +83,9 @@ final class LoginViewController: UIViewController {
         
         // Facebook Login
 
-
         //Styling
         self.navigationController?.isNavigationBarHidden = true
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -140,7 +133,6 @@ final class LoginViewController: UIViewController {
 }
 
 // MARK: - LoginViewController: AKFViewControllerDelegate
-
 extension LoginViewController: AKFViewControllerDelegate {
     
     func viewController(_ viewController: UIViewController!, didCompleteLoginWith accessToken: AKFAccessToken, state: String!) {
@@ -154,7 +146,6 @@ extension LoginViewController: AKFViewControllerDelegate {
 }
 
 // MARK: - LoginViewController: FBSDKLoginButtonDelegate
-
 extension LoginViewController: FBSDKLoginButtonDelegate {
 
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

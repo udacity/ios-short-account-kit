@@ -40,14 +40,11 @@ class AccountViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 97/255, green: 114/255, blue: 127/255, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController?.navigationBar.tintColor = UIColor.white
-
+        applyStyling()
+        
         if isAccountKitLogin {
             accountKit.requestAccount { [weak self] (account, error) in
+                //Populate account view
                 if let error = error {
                     self?.accountIDLabel.text = "N/A"
                     self?.titleLabel.text = "Error"
@@ -73,6 +70,14 @@ class AccountViewController: UIViewController {
 
     // MARK: Helpers
 
+    func applyStyling() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 97/255, green: 114/255, blue: 127/255, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor.white
+    }
+    
     /// A flag indicating the presence of an AccountKit access token
     fileprivate let isAccountKitLogin: Bool = {
         return AKFAccountKit(responseType: .accessToken).currentAccessToken != nil
@@ -88,11 +93,10 @@ class AccountViewController: UIViewController {
         
         if isAccountKitLogin {
             accountKit.logOut()
-            let _ = navigationController?.popToRootViewController(animated: true)
         } else {
             let loginManager = FBSDKLoginManager()
             loginManager.logOut()
-            _ = self.navigationController?.popToRootViewController(animated: true)
         }
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
