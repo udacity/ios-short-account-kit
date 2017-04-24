@@ -189,7 +189,7 @@
                                 <rect key="frame" x="16" y="282" width="382" height="160"/>
                                 <subviews>
                                     <label hidden="YES" autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Account ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJn-4U-LIR">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3Fu-QV-zjX"/>
                                         </constraints>
@@ -198,7 +198,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKb-e5-ao6">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
+                                        <rect key="frame" x="0.0" y="40" width="382" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Arr-Rj-lRn"/>
                                         </constraints>
@@ -207,7 +207,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaB-67-I8p">
-                                        <rect key="frame" x="0.0" y="40" width="382" height="40"/>
+                                        <rect key="frame" x="0.0" y="80" width="382" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="NM4-Bg-T60"/>
                                         </constraints>
@@ -216,7 +216,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dv2-nI-Ugx">
-                                        <rect key="frame" x="0.0" y="80" width="382" height="80"/>
+                                        <rect key="frame" x="0.0" y="120" width="382" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="izQ-YM-GS4"/>
                                         </constraints>

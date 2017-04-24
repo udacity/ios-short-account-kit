@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AccountKitClientToken</key>
-	<string>YourAccountKitClientToken</string>
+    <string>{YourAccountKitClientToken}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,23 +23,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ak<YourAppID></string>
+                <string>ak{YourAppID}</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>YourAppID</string>
+    <string>{YourAppID}</string>
     <key>FacebookDisplayName</key>
-    <string>AppDisplayName</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+    <string>{AppDisplayName}</string>
     <key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
