@@ -47,22 +47,9 @@ class VisitorBadge: UIView {
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     private func loadImageUrl(url urlString: String) {
-        // In this example, each badge performs its own fetch for a remote
-        // image. In a real app we'd want to organize this a bit better.
-        guard let url = URL(string: urlString) else {
-            print("Couldn't form URL for supplied string")
-            // handle
-            return
+        ImageLoader.sharedInstance.load(url: urlString) { [weak self] image in
+            self?.imageView?.image = image
         }
-
-        let dataTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    self?.imageView?.image = image
-                }
-            }
-        }
-        dataTask.resume()
     }
 
     private func commonConfiguration() {

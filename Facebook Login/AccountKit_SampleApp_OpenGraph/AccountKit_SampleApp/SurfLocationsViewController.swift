@@ -159,6 +159,8 @@ extension SurfLocationsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AccountViewController {
             vc.profile = profile
+        } else if let nc = segue.destination as? UINavigationController, let vc = nc.topViewController as? FollowFriendsViewController {
+            vc.profile = profile
         }
     }
 }

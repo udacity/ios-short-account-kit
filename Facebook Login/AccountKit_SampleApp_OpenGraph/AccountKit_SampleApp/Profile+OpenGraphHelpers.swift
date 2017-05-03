@@ -90,23 +90,10 @@ internal extension Profile {
             return
         }
 
-        // Ensure we can form a URL
-        guard let url = URL(string: urlString) else {
-            fatalError("Could not construct URL from string \(urlString)")
+        ImageLoader.sharedInstance.load(url: urlString) { [weak self] image in
+            self?.profileImage = image
+            completion(image)
         }
-
-        // Create and result a data task on the shared URLSession
-        let dataTask = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            DispatchQueue.main.async {
-                if let data = data, let image = UIImage(data: data) {
-                    self?.profileImage = image
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-            }
-        }
-        dataTask.resume()
     }
 }
 

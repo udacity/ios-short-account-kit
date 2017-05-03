@@ -10,12 +10,53 @@ import UIKit
 
 internal final class FollowFriendsViewController: UIViewController {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var tableView: UITableView!
+
+    var profile: Profile? {
+        didSet {
+            if isViewLoaded { tableView.reloadData() }
+        }
     }
-    */
+
+    @IBAction func done(sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.reloadData()
+    }
+}
+
+
+
+extension FollowFriendsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return profile?.data?.friends?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let surfer = profile?.data?.friends?[indexPath.row] else {
+            fatalError()
+        }
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as? FriendCell else {
+            fatalError()
+        }
+
+        cell.configure(with: surfer)
+
+        return cell
+    }
+}
+
+
+extension FollowFriendsViewController: UITableViewDelegate {
 
 }
+
+

@@ -18,6 +18,8 @@
 		03AE46231EBA1F6400D9734E /* Profile+AccountKitHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46221EBA1F6400D9734E /* Profile+AccountKitHelpers.swift */; };
 		03AE46251EBA2A5200D9734E /* VisitorBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46241EBA2A5200D9734E /* VisitorBadge.swift */; };
 		03AE46271EBA62EC00D9734E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AE46261EBA62EC00D9734E /* FBSDKShareKit.framework */; };
+		03AE46291EBA711F00D9734E /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46281EBA711F00D9734E /* FriendCell.swift */; };
+		03AE462B1EBA730B00D9734E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE462A1EBA730B00D9734E /* ImageLoader.swift */; };
 		03AF993B1EA92BB9009B1114 /* SurfLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF993A1EA92BB9009B1114 /* SurfLocation.swift */; };
 		03AF993D1EA92C2B009B1114 /* Surfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF993C1EA92C2B009B1114 /* Surfer.swift */; };
 		03AF993F1EA931EE009B1114 /* SurfLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF993E1EA931EE009B1114 /* SurfLocationsViewController.swift */; };
@@ -67,6 +69,8 @@
 		03AE46221EBA1F6400D9734E /* Profile+AccountKitHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profile+AccountKitHelpers.swift"; sourceTree = "<group>"; };
 		03AE46241EBA2A5200D9734E /* VisitorBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorBadge.swift; sourceTree = "<group>"; };
 		03AE46261EBA62EC00D9734E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		03AE46281EBA711F00D9734E /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		03AE462A1EBA730B00D9734E /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		03AF993A1EA92BB9009B1114 /* SurfLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfLocation.swift; sourceTree = "<group>"; };
 		03AF993C1EA92C2B009B1114 /* Surfer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Surfer.swift; sourceTree = "<group>"; };
 		03AF993E1EA931EE009B1114 /* SurfLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurfLocationsViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				03AF993A1EA92BB9009B1114 /* SurfLocation.swift */,
 				03AE461C1EBA176700D9734E /* SurfLocations+Hardcoded.swift */,
 				032257661EB77B0D00645D27 /* GraphClient.swift */,
+				03AE462A1EBA730B00D9734E /* ImageLoader.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			children = (
 				03BE78F11EA93613007F6ECE /* SurfLocationCell.swift */,
 				03AE46241EBA2A5200D9734E /* VisitorBadge.swift */,
+				03AE46281EBA711F00D9734E /* FriendCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				03399B4E1EB24ADA00057C71 /* Profile.swift in Sources */,
 				ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */,
 				03AF99411EA93200009B1114 /* SurfLocationsDataSource.swift in Sources */,
+				03AE46291EBA711F00D9734E /* FriendCell.swift in Sources */,
 				03AE46191EBA0F5A00D9734E /* FollowFriendsViewController.swift in Sources */,
 				03AE46251EBA2A5200D9734E /* VisitorBadge.swift in Sources */,
 				ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */,
@@ -401,6 +408,7 @@
 				ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */,
 				03AF993D1EA92C2B009B1114 /* Surfer.swift in Sources */,
 				03AF993B1EA92BB9009B1114 /* SurfLocation.swift in Sources */,
+				03AE462B1EBA730B00D9734E /* ImageLoader.swift in Sources */,
 				03AE461F1EBA177B00D9734E /* Surfer+Hardcoded.swift in Sources */,
 				03AE461B1EBA10EC00D9734E /* Profile+OpenGraphHelpers.swift in Sources */,
 				03AE46171EB8F35000D9734E /* Appearance.swift in Sources */,
