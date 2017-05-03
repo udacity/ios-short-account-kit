@@ -107,9 +107,12 @@ final class LoginViewController: UIViewController {
     @IBAction func loginWithFacebook(_ sender: Any) {
         let readPermissions = ["public_profile"]
         let loginManager = FBSDKLoginManager()
+        //loginManager.loginBehavior = .systemAccount
         loginManager.logIn(withReadPermissions: readPermissions, from: self) { (result, error) in
-            if ((error) != nil){
-                print("login failed with error: \(String(describing: error))")
+            if let error = error {
+                let alert = UIAlertController(title: "Login failed", message: "\(error)", preferredStyle: .actionSheet)
+                self.present(alert, animated:true)
+                print("login failed with error: \(error)")
             } else if (result?.isCancelled)! {
                 print("login cancelled")
             } else {
