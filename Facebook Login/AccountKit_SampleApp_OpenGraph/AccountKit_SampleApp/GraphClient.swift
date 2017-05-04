@@ -18,7 +18,7 @@ internal struct GraphClient { }
 // MARK: - Updating profile information
 
 internal extension GraphClient {
-    ///
+    /// Fetches a dictionary of user content for the current profile
     func fetchProfileDictionary(for profile: Profile, completion: @escaping ([String: Any]?, Error?) -> Void) {
         // Make sure this is a Facebook login
         guard profile.isFacebookLogin else {
@@ -46,27 +46,21 @@ internal extension GraphClient {
         }
     }
 
-    ///
-    func fetchProfilePicture(identifier: String, completion: @escaping (String?) -> Void) {
-        guard let graphRequest = FBSDKGraphRequest(graphPath: "\(identifier)/picture", parameters:  ["type": "normal"]) else {
+    /// Fetches an array of friend dictionaries including picture urls
+    func fetchProfileFriends(completion: @escaping ([[String: Any]]?, Error?) -> Void) {
+        let fields: [FieldType] = [.id, .name, .picture]
+        let parameters = ["fields": fields.map{($0.rawValue)}.joined(separator: ",")]
+        guard let graphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: parameters) else {
             fatalError("Unable to create graph request")
         }
+
         _ = graphRequest.start { (_, result, error) in
             if let error = error {
-                print("Unable to fetch facebook user picture: \(error)")
-                // Handle error
-                completion(nil)
-                return
+                print("Error fetching friends: \(error)")
             }
 
-            // Call the completion handler with the result
-            if let dictionary = result as? [String: Any], let url = dictionary["url"] as? String {
-                completion(url)
-            } else {
-                print("Unexpected result format in picture request")
-                // Handle
-                completion(nil)
-            }
+            let data = (result as? [String: Any])?["data"] as? [[String: Any]]
+            completion(data, error)
         }
     }
 

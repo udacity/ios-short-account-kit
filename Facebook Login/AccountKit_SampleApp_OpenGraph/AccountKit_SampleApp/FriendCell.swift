@@ -33,6 +33,7 @@ internal final class FriendCell: UITableViewCell {
         setFollowButtonState(alreadyFollowing: surfer.following)
 
         // Image
+        thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.width / 2
         thumbnailImageView.image = #imageLiteral(resourceName: "icon_profile-empty")
         if let imageDescriptor = surfer.imageDescriptor {
             loadImage(for: imageDescriptor)
