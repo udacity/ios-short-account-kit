@@ -322,7 +322,6 @@
 				TargetAttributes = {
 					ED7EDDE21DEB5B5A00E62017 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8RNGB2AAZL;
 						ProvisioningStyle = Automatic;
 					};
 					ED7EDDF61DEB5B5B00E62017 = {
@@ -555,14 +554,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8RNGB2AAZL;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AccountKit_SampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.joshsvatek.AccountKitSampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.AccountKitSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -572,14 +571,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8RNGB2AAZL;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AccountKit_SampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.joshsvatek.AccountKitSampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.AccountKitSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

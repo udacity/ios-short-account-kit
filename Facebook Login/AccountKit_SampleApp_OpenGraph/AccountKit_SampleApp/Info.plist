@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AccountKitClientToken</key>
-	<string>34c4467d766ccb6a94b39a59533af161</string>
+	<string>b17f265551ca8c307f6fd4f69a54977c</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,15 +23,15 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ak1262670643787270</string>
-				<string>fb1262670643787270</string>
+				<string>ak1318988878152020</string>
+				<string>fb1318988878152020</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>1262670643787270</string>
+	<string>1318988878152020</string>
 	<key>FacebookDisplayName</key>
 	<string>SurfConnect</string>
 	<key>LSApplicationQueriesSchemes</key>
