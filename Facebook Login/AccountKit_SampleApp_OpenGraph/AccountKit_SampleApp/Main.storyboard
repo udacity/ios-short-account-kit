@@ -189,7 +189,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5h-Mj-lim">
-                                <rect key="frame" x="148" y="666" width="120" height="50"/>
+                                <rect key="frame" x="147" y="666" width="120" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Hi0-H7-Ogw"/>
                                     <constraint firstAttribute="height" constant="50" id="Rk1-hO-rwC"/>
@@ -318,7 +318,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UgD-Bl-n94" id="Ik6-w0-gM9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-oy-JUL">
@@ -539,11 +539,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Where are you headed?" id="ubm-x6-dxO">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="lNl-de-Rj8">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="kzT-jG-EIn" kind="presentation" identifier="ShowFollowFriend" id="Qsz-1b-NPn"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" width="32" id="umb-PI-r2G">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7Ok-Mr-I6C">
+                                <rect key="frame" x="20" y="7" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon_add_friends"/>
+                                <connections>
+                                    <segue destination="kzT-jG-EIn" kind="presentation" identifier="ShowFriends" id="Zir-BL-rYM"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" width="32" id="2V0-tO-sOw">
                             <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FMA-QM-W2h">
@@ -571,6 +575,7 @@
     </scenes>
     <resources>
         <image name="bgWave" width="375" height="667"/>
+        <image name="icon_add_friends" width="30" height="24"/>
         <image name="icon_profile-empty" width="100" height="100"/>
         <image name="logoSurfConnect" width="62" height="55"/>
         <image name="thumb-TylerJenkins" width="50" height="50"/>
