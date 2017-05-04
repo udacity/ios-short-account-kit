@@ -61,7 +61,8 @@ internal extension Surfer {
         return Surfer(identifier: fakeSurfer.rawValue,
                       name: fullFakeName(fakeSurfer: fakeSurfer),
                       imageDescriptor: fakeImageDescriptor(fakeSurfer: fakeSurfer),
-                      following: false)
+                      following: false,
+                      fakeAccount: true)
     }
 }
 

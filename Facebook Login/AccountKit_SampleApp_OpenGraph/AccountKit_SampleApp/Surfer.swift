@@ -27,6 +27,9 @@ internal struct Surfer {
 
     /// Indicates if this Surfer is following the current user.
     var following = false
+
+    /// A flag indicating this is a fake user account
+    let fakeAccount: Bool
 }
 
 internal extension Surfer {

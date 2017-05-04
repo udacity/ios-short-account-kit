@@ -32,20 +32,31 @@ internal extension Profile {
                 }
                 return
             }
-            if let dictionary = dictionary, let profileData = Profile.makeProfileData(with: dictionary) {
-                self.replaceProfileData(profileData)
+
+            guard let dictionary = dictionary else {
+                DispatchQueue.main.async {
+                    completion()
+                }
+                return
             }
-            DispatchQueue.main.async {
-                completion()
+
+            Profile.makeProfileData(with: dictionary) { [weak self] result in
+                if let profileData = result {
+                    self?.replaceProfileData(profileData)
+                }
+                DispatchQueue.main.async {
+                    completion()
+                }
             }
         }
     }
 
     /// Maps a dictionary of data returned by `FBSDKGraphRequest` -> ProfileData
-    fileprivate static func makeProfileData(with dictionary: [String: Any]) -> ProfileData? {
+    fileprivate static func makeProfileData(with dictionary: [String: Any], completion: @escaping (ProfileData?) -> Void) {
         // We must at least have the identifier. The rest is optional.
         guard let id = dictionary["id"] as? String else {
-            return nil
+            completion(nil)
+            return
         }
 
         let name = dictionary["name"] as? String
@@ -59,15 +70,63 @@ internal extension Profile {
         // get back
 
         let hardcodedFriends = Surfer.makeHardcodedSurfers()
-        let foundFriends: [Surfer] = [] // From freindsDictionary?["data"]
+        let foundFriends = friendsDictionary.flatMap(makeSurfers) ?? []
 
-        return ProfileData(id: id,
-                           name: name,
-                           email: email,
-                           phone: nil,
-                           pictureUrl: pictureDataDictionary?["url"] as? String,
-                           friends: hardcodedFriends + foundFriends,
-                           friendsCount: friendsSummaryDictionary?["total_count"] as? Int)
+        loadImageDescriptors(for: foundFriends) { updatedFoundFriends in
+            let profileData = ProfileData(id: id,
+                                          name: name,
+                                          email: email,
+                                          phone: nil,
+                                          pictureUrl: pictureDataDictionary?["url"] as? String,
+                                          friends: hardcodedFriends + foundFriends,
+                                          friendsCount: friendsSummaryDictionary?["total_count"] as? Int)
+            completion(profileData)
+        }
+    }
+
+    fileprivate static func makeSurfers(from dictionary: [String: Any]) -> [Surfer] {
+        guard let friends = dictionary["data"] as? [[String: Any]] else {
+            print("No friends data included")
+            return []
+        }
+
+        return friends.flatMap { item in
+            guard let name = item["name"] as? String, let id = item["id"] as? String else {
+                return nil
+            }
+            return Surfer(identifier: id, name: name, imageDescriptor: nil, following: false, fakeAccount: false)
+        }
+    }
+
+    /// Recursively fetches image descripors via the graph API, and returns a
+    /// new array of `Surfer`s with populated image descriptors. This is simple
+    /// and sequential and won't scale to many friends.
+    fileprivate static func loadImageDescriptors(for surfers: [Surfer], completion: @escaping ([Surfer]) -> Void) {
+        // If the array is empty, return
+        guard !surfers.isEmpty else {
+            completion(surfers)
+            return
+        }
+
+        // If there are no more to process, return
+        guard let index = surfers.index(where: { surfer in surfer.fakeAccount == false && surfer.imageDescriptor == nil }) else {
+            completion(surfers)
+            return
+        }
+
+        let surfer = surfers[index]
+        GraphClient().fetchProfilePicture(identifier: surfer.identifier) { urlString in
+            guard let url = urlString else {
+                print("Failed fetching profile pictures. Stopping.")
+                completion(surfers)
+                return
+            }
+            var newSurfers = surfers
+            newSurfers[index] = Surfer(identifier: surfer.identifier, name: surfer.name, imageDescriptor: .remote(url), following: surfer.following, fakeAccount: false)
+
+            // Call again
+            self.loadImageDescriptors(for: newSurfers, completion: completion)
+        }
     }
 }
 

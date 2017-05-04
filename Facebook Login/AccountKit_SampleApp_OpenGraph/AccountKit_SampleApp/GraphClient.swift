@@ -46,6 +46,30 @@ internal extension GraphClient {
         }
     }
 
+    ///
+    func fetchProfilePicture(identifier: String, completion: @escaping (String?) -> Void) {
+        guard let graphRequest = FBSDKGraphRequest(graphPath: "\(identifier)/picture", parameters:  ["type": "normal"]) else {
+            fatalError("Unable to create graph request")
+        }
+        _ = graphRequest.start { (_, result, error) in
+            if let error = error {
+                print("Unable to fetch facebook user picture: \(error)")
+                // Handle error
+                completion(nil)
+                return
+            }
+
+            // Call the completion handler with the result
+            if let dictionary = result as? [String: Any], let url = dictionary["url"] as? String {
+                completion(url)
+            } else {
+                print("Unexpected result format in picture request")
+                // Handle
+                completion(nil)
+            }
+        }
+    }
+
     // Profile field types
 
     fileprivate enum FieldType: String {
