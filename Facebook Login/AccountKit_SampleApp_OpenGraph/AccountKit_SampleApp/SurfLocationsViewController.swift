@@ -36,6 +36,8 @@ internal final class SurfLocationsViewController: UIViewController {
             button.clipsToBounds = true
         }
 
+        navigationItem.leftBarButtonItem?.customView?.isHidden = !profile.isFacebookLogin
+
         if !profile.isDataLoaded {
             profile.loadProfileData {
                 self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: SurfLocation.makeHardcodedLocations())
