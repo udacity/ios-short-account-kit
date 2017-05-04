@@ -27,8 +27,12 @@ class AccountViewController: UIViewController {
 
     // MARK: Outlets
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+
     @IBOutlet weak var accountIDTitleLabel: UILabel!
     @IBOutlet weak var accountIDLabel: UILabel!
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
@@ -43,31 +47,63 @@ class AccountViewController: UIViewController {
 
         navigationController?.setNavigationBarHidden(false, animated: false)
 
-//
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 97/255, green: 114/255, blue: 127/255, alpha: 1.0)
-//        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
-//        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-//        navigationController?.navigationBar.tintColor = UIColor.white
+        imageView.layer.cornerRadius = imageView.bounds.width / 2
 
-        accountIDTitleLabel.isHidden = !profile.isDataLoaded
-        accountIDLabel.isHidden = !profile.isDataLoaded
-
-        if profile.isDataLoaded == false {
-            titleLabel.text = "Error"
-        } else if profile.isAccountKitLogin {
-            if let emailAddress = profile.data?.email, !emailAddress.isEmpty {
-                titleLabel.text = "Email Address"
-                valueLabel.text = emailAddress
-            } else if let phoneNumber = profile.data?.phone, !phoneNumber.isEmpty {
-                titleLabel.text = "Phone Number"
-                valueLabel.text = phoneNumber
+        if let image = profile.profileImage {
+            imageView.image = image
+        } else {
+            imageView.image = #imageLiteral(resourceName: "icon_profile-empty")
+            if let imageUrl = profile.data?.pictureUrl {
+                ImageLoader.sharedInstance.load(url: imageUrl) { [weak self] image in
+                    self?.imageView.image = image
+                }
             }
-        } else if profile.isFacebookLogin {
-            // ...
         }
 
-        // Only display account ID labels if after an AccountKit login
+        switch profile.loginType {
+        case .accountKit: configureForAccountKitLogin()
+        case .facebook: configureForFacebookLogin()
+        case .none: configureForNoLogin()
+        }
+    }
+
+    private func configureForAccountKitLogin() {
+        setBottomLabelsHidden(false)
+        nameLabel.text = profile.data?.name ?? "Unknown"
+        accountIDLabel.text = profile.data?.id ?? "Unknown"
+
+        // If we have email, show that. If not, use phone number. If neither,
+        // hide the fields.
+        if let email = profile.data?.email {
+            titleLabel.text = "Email"
+            valueLabel.text = email
+        } else if let phone = profile.data?.phone {
+            titleLabel.text = "Phone"
+            valueLabel.text = phone
+        } else {
+            titleLabel.isHidden = true
+            valueLabel.isHidden = true
+        }
+    }
+
+    private func configureForFacebookLogin() {
+        setBottomLabelsHidden(false)
+        nameLabel.text = profile.data?.name ?? "Unknown"
+        accountIDLabel.text = profile.data?.id ?? "Unknown"
+        titleLabel.text = "Email"
+        valueLabel.text = profile.data?.email ?? "Unknown"
+    }
+
+    private func configureForNoLogin() {
+        setBottomLabelsHidden(true)
+        nameLabel.text = "Unknown"
+    }
+
+    private func setBottomLabelsHidden(_ hidden: Bool) {
+        accountIDTitleLabel.isHidden = hidden
+        accountIDLabel.isHidden = hidden
+        titleLabel.isHidden = hidden
+        valueLabel.isHidden = hidden
     }
 
     // MARK: Actions

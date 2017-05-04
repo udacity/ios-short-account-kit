@@ -39,5 +39,6 @@ internal extension Appearance {
     struct Fonts {
         static let navigationBarTitle: UIFont = UIFont(name: "Avenir-Heavy", size: 17)!
         static let tiny: UIFont = UIFont(name: "Avenir-Black", size: 10)!
+        static let buttonLabel: UIFont = UIFont(name: "Avenir-Black", size: 13)!
     }
 }

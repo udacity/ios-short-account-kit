@@ -14,7 +14,10 @@ internal final class FollowFriendsViewController: UIViewController {
 
     var profile: Profile? {
         didSet {
-            if isViewLoaded { tableView.reloadData() }
+            resetFollowing()
+            if isViewLoaded {
+                tableView.reloadData()
+            }
         }
     }
 
@@ -26,6 +29,12 @@ internal final class FollowFriendsViewController: UIViewController {
         super.viewDidLoad()
         tableView.reloadData()
     }
+
+    var followingSurferIdentifiers: Set<String> = []
+
+    func resetFollowing() {
+        followingSurferIdentifiers = []
+    }
 }
 
 
@@ -35,8 +44,12 @@ extension FollowFriendsViewController: UITableViewDataSource {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    var numberOfRows: Int {
         return profile?.data?.friends?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRows
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,15 +61,26 @@ extension FollowFriendsViewController: UITableViewDataSource {
             fatalError()
         }
 
+        cell.delegate = self
         cell.configure(with: surfer)
+        cell.setFollowButtonState(alreadyFollowing: followingSurferIdentifiers.contains(surfer.identifier))
 
         return cell
     }
 }
 
 
-extension FollowFriendsViewController: UITableViewDelegate {
-
+extension FollowFriendsViewController: FriendCellDelegate {
+    // Ultimately we'd want to push these changes back to the data model, but
+    // don't have a persisted data layer in this example project
+    func friendCell(_ cell: FriendCell, didTapFollowWithIdentifier identifier: String) {
+        if followingSurferIdentifiers.contains(identifier) {
+            followingSurferIdentifiers.remove(identifier)
+        } else {
+            followingSurferIdentifiers.insert(identifier)
+        }
+        tableView.reloadData()
+    }
 }
 
 

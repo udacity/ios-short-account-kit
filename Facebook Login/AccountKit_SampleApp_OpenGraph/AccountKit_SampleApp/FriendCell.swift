@@ -14,11 +14,21 @@ internal final class FriendCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
 
-    @IBAction func followButtonTapped(sender: UIButton) {
+    @IBOutlet weak var followButtonWidthConstraint: NSLayoutConstraint!
 
+    var surferIdentifier: String?
+
+    weak var delegate: FriendCellDelegate?
+
+    @IBAction func followButtonTapped(sender: UIButton) {
+        guard let identifier = surferIdentifier else {
+            fatalError("surferIdentifier not set")
+        }
+        delegate?.friendCell(self, didTapFollowWithIdentifier: identifier)
     }
 
     func configure(with surfer: Surfer) {
+        surferIdentifier = surfer.identifier
         nameLabel.text = surfer.name
         setFollowButtonState(alreadyFollowing: surfer.following)
 
@@ -43,6 +53,21 @@ internal final class FriendCell: UITableViewCell {
     }
 
     func setFollowButtonState(alreadyFollowing: Bool) {
+        let attributes: [String: Any] = [
+            NSFontAttributeName: Appearance.Fonts.buttonLabel,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSKernAttributeName: 2
+        ]
+        let text = alreadyFollowing ? "UNFOLLOW" : "FOLLOW"
+        let attributedText = NSAttributedString(string: text, attributes: attributes)
 
+        followButton.setAttributedTitle(attributedText, for: .normal)
+        followButton.backgroundColor = alreadyFollowing ? Appearance.Colors.blueGray : Appearance.Colors.green
+        followButtonWidthConstraint.constant = alreadyFollowing ? 116 : 100
     }
+}
+
+protocol FriendCellDelegate: class {
+    ///
+    func friendCell(_ cell: FriendCell, didTapFollowWithIdentifier identifier: String)
 }
