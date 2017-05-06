@@ -53,10 +53,8 @@ class AccountViewController: UIViewController {
             imageView.image = image
         } else {
             imageView.image = #imageLiteral(resourceName: "icon_profile-empty")
-            if let imageUrl = profile.data?.pictureUrl {
-                ImageLoader.sharedInstance.load(url: imageUrl) { [weak self] image in
-                    self?.imageView.image = image
-                }
+            profile.loadProfileImage { [weak self] image in
+                self?.imageView.image = image
             }
         }
 
@@ -69,15 +67,15 @@ class AccountViewController: UIViewController {
 
     private func configureForAccountKitLogin() {
         setBottomLabelsHidden(false)
-        nameLabel.text = profile.data?.name ?? "Unknown"
-        accountIDLabel.text = profile.data?.id ?? "Unknown"
+        nameLabel.text = profile.accountKitData?.name ?? "Unknown"
+        accountIDLabel.text = profile.accountKitData?.id ?? "Unknown"
 
         // If we have email, show that. If not, use phone number. If neither,
         // hide the fields.
-        if let email = profile.data?.email {
+        if let email = profile.accountKitData?.email {
             titleLabel.text = "Email"
             valueLabel.text = email
-        } else if let phone = profile.data?.phone {
+        } else if let phone = profile.accountKitData?.phone {
             titleLabel.text = "Phone"
             valueLabel.text = phone
         } else {
@@ -88,10 +86,10 @@ class AccountViewController: UIViewController {
 
     private func configureForFacebookLogin() {
         setBottomLabelsHidden(false)
-        nameLabel.text = profile.data?.name ?? "Unknown"
-        accountIDLabel.text = profile.data?.id ?? "Unknown"
+        nameLabel.text = profile.facebookData?.name ?? "Unknown"
+        accountIDLabel.text = profile.facebookData?.id ?? "Unknown"
         titleLabel.text = "Email"
-        valueLabel.text = profile.data?.email ?? "Unknown"
+        valueLabel.text = profile.facebookData?.email ?? "Unknown"
     }
 
     private func configureForNoLogin() {

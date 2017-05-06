@@ -45,7 +45,7 @@ extension FollowFriendsViewController: UITableViewDataSource {
     }
 
     var numberOfRows: Int {
-        return profile?.data?.friends?.count ?? 0
+        return profile?.facebookData?.friends.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,7 +53,7 @@ extension FollowFriendsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let surfer = profile?.data?.friends?[indexPath.row] else {
+        guard let surfer = profile?.facebookData?.friends[indexPath.row] else {
             fatalError()
         }
 
@@ -63,7 +63,7 @@ extension FollowFriendsViewController: UITableViewDataSource {
 
         cell.delegate = self
         cell.configure(with: surfer)
-        cell.setFollowButtonState(alreadyFollowing: followingSurferIdentifiers.contains(surfer.identifier))
+        cell.setFollowButtonState(isFollowedByUser: followingSurferIdentifiers.contains(surfer.identifier))
 
         return cell
     }

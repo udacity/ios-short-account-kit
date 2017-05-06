@@ -8,14 +8,26 @@
 
 import UIKit
 
-class VisitorBadge: UIView {
+// A small profile thumbnail displaying a visitor at a surf location. It has
+// two modes, depending on how it is initialized. It can either display a single
+// visitor with a profile picture in its image view, or it can be initialized
+// to display an (aggregate) count of additional visitors.
+
+internal final class VisitorBadge: UIView {
+    // If no picture, used to display a count
     var label: UILabel?
+
+    // If a picture is available, the imageview displats it
     var imageView: UIImageView?
 
-    let size = CGSize(width: 30, height: 30)
+    fileprivate struct Metrics {
+        // The size of the visitor badge
+        static let size = CGSize(width: 30, height: 30)
+    }
 
+    /// Initializer when displaying an aggregate count of visitors
     init(withRemainderCount count: Int) {
-        super.init(frame: CGRect(origin: .zero, size: size))
+        super.init(frame: CGRect(origin: .zero, size: Metrics.size))
         commonConfiguration()
         label = UILabel(frame: bounds)
         label!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -28,37 +40,28 @@ class VisitorBadge: UIView {
         label!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
     }
 
-    init(withImageDescriptor imageDescriptor: Surfer.ImageDescriptor?) {
-        super.init(frame: CGRect(origin: .zero, size: size))
+    /// Initializer for displaying a single surfer with a picture
+    init(surfer: Surfer) {
+        super.init(frame: CGRect(origin: .zero, size: Metrics.size))
         commonConfiguration()
         imageView = UIImageView(frame: bounds)
         imageView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         imageView!.contentMode = .scaleAspectFill
         imageView!.image = #imageLiteral(resourceName: "icon_profile-empty")
         addSubview(imageView!)
-
-        switch imageDescriptor {
-        case let .hardcoded(name)?: imageView!.image = UIImage(named: name)
-        case let .remote(urlString)?: loadImageUrl(url: urlString)
-        default: ()
-        }
+        imageView!.loadImage(for: surfer)
     }
-    
+
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    private func loadImageUrl(url urlString: String) {
-        ImageLoader.sharedInstance.load(url: urlString) { [weak self] image in
-            self?.imageView?.image = image
-        }
-    }
-
+    /// Common configuration for convenience initializers above
     private func commonConfiguration() {
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: size.height).isActive = true
-        widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        heightAnchor.constraint(equalToConstant: Metrics.size.height).isActive = true
+        widthAnchor.constraint(equalToConstant: Metrics.size.width).isActive = true
         backgroundColor = Appearance.Colors.gray
         clipsToBounds = true
-        layer.cornerRadius = size.width / 2
+        layer.cornerRadius = Metrics.size.width / 2
         layer.borderWidth = 2
         layer.borderColor = Appearance.Colors.lightBlue.cgColor
     }

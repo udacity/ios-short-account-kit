@@ -40,7 +40,7 @@ internal final class SurfLocationsViewController: UIViewController {
 
         if !profile.isDataLoaded {
             profile.loadProfileData {
-                self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: SurfLocation.makeHardcodedLocations())
+                self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: SurfLocation.Hardcoded.makeLocations())
                 self.tableView.dataSource = self.dataSource
                 self.tableView.reloadData()
                 // Fetch the profile image now that we have an URL
@@ -134,22 +134,17 @@ extension SurfLocationsViewController: UITextFieldDelegate {
 // MARK: - Updating navigation bar buttons
 
 internal extension SurfLocationsViewController {
-    ///
     func updateAccountButton() {
         // If we have a profile image – use it and return
         if let image = profile.profileImage {
             accountButton.setImage(image, for: .normal)
-            return
-        }
-
-        // Otherwise, we'll set a placeholder and load the real image
-        accountButton.setImage(#imageLiteral(resourceName: "icon_profile-empty"), for: .normal)
-        profile.loadImage { [weak self] image in
-            guard let image = image else {
-                print("We weren't able to load the profile image")
-                return
+        } else {
+            accountButton.setImage(#imageLiteral(resourceName: "icon_profile-empty"), for: .normal)
+            profile.loadProfileImage { [weak self] image in
+                if let image = image {
+                    self?.accountButton.setImage(image, for: .normal)
+                }
             }
-            self?.accountButton.setImage(image, for: .normal)
         }
     }
 }

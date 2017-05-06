@@ -539,6 +539,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Where are you headed?" id="ubm-x6-dxO">
+                        <barButtonItem key="backBarButtonItem" title="  " id="c9q-yQ-geZ"/>
                         <barButtonItem key="leftBarButtonItem" width="32" id="umb-PI-r2G">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7Ok-Mr-I6C">
                                 <rect key="frame" x="20" y="7" width="32" height="30"/>

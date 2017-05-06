@@ -9,10 +9,10 @@
 import UIKit
 
 internal final class SurfLocationsDataSource: NSObject {
-    ///
+    /// The logged-in user's profile
     fileprivate let profile: Profile
 
-    ///
+    /// The locations being displayed
     fileprivate let locations: [SurfLocation]
 
     init(profile: Profile, locations: [SurfLocation]) {
@@ -65,7 +65,7 @@ extension SurfLocationsDataSource: UITableViewDataSource {
 
     private func updateVisitorBadges(cell: SurfLocationCell, visitors: [String]) {
         // Find the people we're following with matching IDs
-        let surfers = profile.data?.friends ?? []
+        let surfers = profile.facebookData?.friends ?? []
         let surferIDs = Set(surfers.map({ $0.identifier }))
         let matchingIDs = surferIDs.intersection(visitors)
         let matchingSurfers = surfers.filter { matchingIDs.contains($0.identifier) }
@@ -75,7 +75,7 @@ extension SurfLocationsDataSource: UITableViewDataSource {
 
         // Create badges for the ones we matched
         let pictureBadges: [VisitorBadge] = matchingSurfers.map { surfer in
-            return VisitorBadge(withImageDescriptor: surfer.imageDescriptor)
+            return VisitorBadge(surfer: surfer)
         }
 
         let remainderBadges: [VisitorBadge] = (unmatchingCount > 0 || pictureBadges.isEmpty) ? [VisitorBadge(withRemainderCount: unmatchingCount)] : []
