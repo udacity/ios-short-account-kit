@@ -36,12 +36,16 @@ internal extension OpenGraphClient {
         }
 
         /// Maps an array of friend data to an array of `Surfer`s
-        static func makeSurfers(with array: [[String: Any]]) -> [Surfer] {
-            return array.flatMap(makeSurfer)
+        static func makeFacebookSurfers(with array: [[String: Any]]) -> [Surfer] {
+            return array.flatMap { makeSurfer(surferType: .facebookUser, with: $0) }
+        }
+        /// Maps an array of test userfriend data to an array of `Surfer`s
+        static func makeTestUserSurfers(with array: [[String: Any]]) -> [Surfer] {
+            return array.flatMap { makeSurfer(surferType: .facebookTestUser, with: $0) }
         }
 
         /// Maps a friend data dictionary to a `Surfer`
-        static func makeSurfer(with dictionary: [String: Any]) -> Surfer? {
+        static func makeSurfer(surferType: Surfer.SurferType, with dictionary: [String: Any]) -> Surfer? {
             guard let id = dictionary["id"] as? String,
                 let name = dictionary["name"] as? String,
                 let picture = dictionary["picture"] as? [String: Any],
@@ -49,7 +53,7 @@ internal extension OpenGraphClient {
                 let url = pictureData["url"] as? String else {
                     return nil
             }
-            return Surfer(identifier: id, name: name, imageUrl: url, image: nil, isFollowedByUser: false)
+            return Surfer(identifier: id, name: name, surferType: surferType, imageUrl: url, image: nil, isFollowedByUser: false)
         }
     }
 }

@@ -20,6 +20,9 @@ internal final class SurfLocationsDataSource: NSObject {
         self.locations = locations
         super.init()
     }
+
+    /// Returns `true` if locations array is non-empty
+    internal var isLoaded: Bool { return !locations.isEmpty }
 }
 
 // MARK: - Table view data source conformance

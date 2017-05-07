@@ -18,6 +18,9 @@ internal final class Surfer {
     /// The surfer's full name
     let name: String
 
+    /// The `SurferType` (real facebook user, test facebook user, or hardcoded)
+    let surferType: SurferType
+
     /// An URL for the user's profile image, if available
     let imageUrl: String?
 
@@ -27,13 +30,16 @@ internal final class Surfer {
     /// Indicates if the Surfer is being followd by the logged-in user
     var isFollowedByUser: Bool
 
-    init(identifier: String, name: String, imageUrl: String? = nil, image: UIImage? = nil, isFollowedByUser: Bool = false) {
+    init(identifier: String, name: String, surferType: SurferType, imageUrl: String? = nil, image: UIImage? = nil, isFollowedByUser: Bool = false) {
         self.identifier = identifier
         self.name = name
+        self.surferType = surferType
         self.imageUrl = imageUrl
         self.image = image
         self.isFollowedByUser = isFollowedByUser
     }
+
+    enum SurferType { case facebookUser, facebookTestUser, hardcoded }
 }
 
 // -----------------------------------------------------------------------------

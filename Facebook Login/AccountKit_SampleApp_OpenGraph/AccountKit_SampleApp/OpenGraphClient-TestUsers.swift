@@ -27,15 +27,7 @@ internal extension OpenGraphClient {
 
         static let permissions: Set<String> = ["public_profile", "user_friends", "email"]
 
-        static let names: [String] = [
-            "U. Lynn Ortiz",
-            "U. Minnie Roberts",
-            "U. Claudia Walsh",
-            "U. Ryan Townsend",
-            "U. Wallace Miles",
-            "U. Janis Knight",
-            "U. Franklin Hicks"
-        ]
+        static let names: [String] = ["Lynn Ortiz", "Claudia Walsh", "Franklin Hicks"]
 
         static var primaryToken: FBSDKAccessToken?
         static var tokens: [FBSDKAccessToken] = []
@@ -77,7 +69,7 @@ internal extension OpenGraphClient.TestUsers {
                 fatalError("Unexpected result type")
             }
 
-            let surfers = OpenGraphClient.ProfileMap.makeSurfers(with: friendsArray)
+            let surfers = OpenGraphClient.ProfileMap.makeTestUserSurfers(with: friendsArray)
             completion(surfers)
         }
     }
@@ -113,12 +105,28 @@ internal extension OpenGraphClient.TestUsers {
         self.tokens = Array(allTokens.dropFirst(1))
 
         // Rename all the test users (including the primary)
-        let accessTokenNames = ["U. Primary Test User"] + self.names
+        updateNames(allTokens: allTokens)
+
+        // Make all the non-primary test users friends with the primary
+        makeFriends(primaryToken: primaryToken!, otherTokens: self.tokens)
+
+        dispatchGroup.notify(queue: .main) {
+            completion()
+        }
+    }
+
+    private static func updateNames(allTokens: [FBSDKAccessToken]) {
+        let accessTokenNames = ["Primary Smith"] + self.names
+
         for (idx, token) in allTokens.enumerated() {
             guard let identifier = token.userID else { fatalError("No identifier for test user token") }
             let name = accessTokenNames[idx]
-            let parameters = ["name": name]
-            let request = FBSDKGraphRequest(graphPath: "/\(identifier)", parameters: parameters, httpMethod: "POST")!
+            let parameters = [ "name": name ]
+            let request = FBSDKGraphRequest(graphPath: "/\(identifier)",
+                parameters: parameters,
+                tokenString: token.tokenString,
+                version: nil,
+                httpMethod: "POST")!
             dispatchGroup.enter()
             request.start { (_, result, error) in
                 if let error = error {
@@ -127,20 +135,17 @@ internal extension OpenGraphClient.TestUsers {
                 self.dispatchGroup.leave()
             }
         }
+    }
 
-        // Make all th non-primary test users friends with the primary
-        for token in self.tokens {
+    private static func makeFriends(primaryToken: FBSDKAccessToken, otherTokens: [FBSDKAccessToken]) {
+        for token in otherTokens {
             dispatchGroup.enter()
-            manager.makeFriends(withFirst: primaryToken!, second: token) { error in
+            manager.makeFriends(withFirst: primaryToken, second: token) { error in
                 if let error = error {
                     print("Error making friends for test user: \(error.localizedDescription)")
                 }
                 self.dispatchGroup.leave()
             }
-        }
-
-        dispatchGroup.notify(queue: .main) {
-            completion()
         }
     }
 }

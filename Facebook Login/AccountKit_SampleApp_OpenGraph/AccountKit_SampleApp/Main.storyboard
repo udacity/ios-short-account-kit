@@ -406,7 +406,7 @@
                         <viewControllerLayoutGuide type="top" id="djA-Yi-dtQ"/>
                         <viewControllerLayoutGuide type="bottom" id="to7-71-YNk"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="T9t-ag-Irx">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="T9t-ag-Irx">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -527,6 +527,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-W8-y9d">
+                                <rect key="frame" x="189" y="318" width="37" height="37"/>
+                                <color key="color" red="0.0084500350058078766" green="0.76744645833969116" blue="0.68722909688949585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -535,6 +539,8 @@
                             <constraint firstAttribute="trailing" secondItem="FR1-oG-aI9" secondAttribute="trailing" id="FSU-mL-hmI"/>
                             <constraint firstItem="FR1-oG-aI9" firstAttribute="leading" secondItem="T9t-ag-Irx" secondAttribute="leading" id="YhZ-KR-qHD"/>
                             <constraint firstItem="FR1-oG-aI9" firstAttribute="top" secondItem="EHm-Xq-LQq" secondAttribute="bottom" id="csm-Gz-av1"/>
+                            <constraint firstItem="Fzy-W8-y9d" firstAttribute="centerY" secondItem="T9t-ag-Irx" secondAttribute="centerY" id="laV-E9-Qfn"/>
+                            <constraint firstItem="Fzy-W8-y9d" firstAttribute="centerX" secondItem="T9t-ag-Irx" secondAttribute="centerX" id="r6F-3s-b3E"/>
                             <constraint firstItem="EHm-Xq-LQq" firstAttribute="top" secondItem="T9t-ag-Irx" secondAttribute="top" id="rpP-Ke-vb5"/>
                             <constraint firstAttribute="trailing" secondItem="EHm-Xq-LQq" secondAttribute="trailing" id="sB3-hD-huy"/>
                         </constraints>
@@ -565,6 +571,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="accountButton" destination="FMA-QM-W2h" id="JMq-es-3nW"/>
+                        <outlet property="activityIndicator" destination="Fzy-W8-y9d" id="sSb-lI-vo0"/>
                         <outlet property="setLocationButton" destination="pEx-Pt-Tfd" id="GSi-0i-xkU"/>
                         <outlet property="setLocationTextField" destination="Fq9-ud-OE8" id="Aly-xD-kKM"/>
                         <outlet property="tableView" destination="FR1-oG-aI9" id="bT4-jr-UyN"/>

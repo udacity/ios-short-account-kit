@@ -67,7 +67,7 @@ internal extension OpenGraphClient {
 
             // Fill in the friend data
             self.fetchProfileFriends { (result, error) in
-                guard let friends = result.flatMap(ProfileMap.makeSurfers) else {
+                guard let friends = result.flatMap(ProfileMap.makeFacebookSurfers) else {
                     // No additional friend data
                     completion(profileData)
                     return

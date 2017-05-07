@@ -15,6 +15,7 @@ internal final class SurfLocationsViewController: UIViewController {
     @IBOutlet weak var accountButton: UIButton!
     @IBOutlet weak var setLocationTextField: UITextField!
     @IBOutlet weak var setLocationButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var shareButton: FBSDKShareButton?
 
@@ -40,9 +41,10 @@ internal final class SurfLocationsViewController: UIViewController {
 
         if !profile.isDataLoaded {
             profile.loadProfileData {
-                self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: SurfLocation.Hardcoded.makeLocations())
+                let locations = SurfLocation.Hardcoded.makeLocations(for: self.profile)
+                self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: locations)
                 self.tableView.dataSource = self.dataSource
-                self.tableView.reloadData()
+                self.reloadData()
                 // Fetch the profile image now that we have an URL
                 self.updateAccountButton()
             }
@@ -53,6 +55,11 @@ internal final class SurfLocationsViewController: UIViewController {
         super.viewWillAppear(animated)
 
         navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
+    fileprivate func reloadData() {
+        tableView.reloadData()
+        activityIndicator.isHidden = dataSource.isLoaded
     }
 }
 

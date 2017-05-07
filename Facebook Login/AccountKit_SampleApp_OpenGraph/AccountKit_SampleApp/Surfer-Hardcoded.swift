@@ -1,4 +1,4 @@
-  //
+//
 //  Surfer-Hardcoded.swift
 //  AccountKit_SampleApp
 //
@@ -20,14 +20,15 @@ internal extension Surfer {
         /// Fake surfers
         static func makeSurfers() -> [Surfer] {
             return [SurferName.kenneth, .mary, .tyler, .crystal, .evelyn, .jeremy, .joan ]
-                .map(makeSurfer)
+                .map(makeHardcodedSurfer)
         }
 
-        static func makeSurfer(name: SurferName) -> Surfer {
+        static func makeHardcodedSurfer(name: SurferName) -> Surfer {
             let fullName = fullFakeName(for: name)
             let image = imageName(for: name).flatMap(UIImage.init(named:))
             return Surfer(identifier: name.rawValue,
                           name: fullName,
+                          surferType: .hardcoded,
                           imageUrl: nil,
                           image: image,
                           isFollowedByUser: false)

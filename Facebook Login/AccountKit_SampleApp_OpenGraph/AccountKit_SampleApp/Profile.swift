@@ -243,4 +243,12 @@ internal extension Profile {
         }
         return nil
     }
+
+    /// Returns the `friends` array for a facebook login
+    var friends: [Surfer] { return facebookData?.friends ?? [] }
+
+    /// Returns the `friends` that match the specify `SurferType`
+    func friends(matching: Surfer.SurferType) -> [Surfer] {
+        return friends.filter { $0.surferType == matching }
+    }
 }
