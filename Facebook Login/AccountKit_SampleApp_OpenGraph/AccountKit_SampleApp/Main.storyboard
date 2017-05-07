@@ -343,7 +343,7 @@
                                                         <constraint firstAttribute="width" constant="48" id="uHg-yE-vHh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyler Jenkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prV-3R-QVO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="Tyler Jenkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prV-3R-QVO">
                                                     <rect key="frame" x="88" y="29" width="96" height="22"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.38039215686274508" green="0.44705882352941173" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
@@ -355,6 +355,7 @@
                                                 <constraint firstItem="prV-3R-QVO" firstAttribute="leading" secondItem="QGL-JV-UQz" secondAttribute="trailing" constant="16" id="IGA-uP-V7s"/>
                                                 <constraint firstItem="Elu-oy-JUL" firstAttribute="centerY" secondItem="Ik6-w0-gM9" secondAttribute="centerY" id="Of2-ha-uD2"/>
                                                 <constraint firstItem="prV-3R-QVO" firstAttribute="centerY" secondItem="Ik6-w0-gM9" secondAttribute="centerY" id="SxO-bW-8zj"/>
+                                                <constraint firstItem="Elu-oy-JUL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="prV-3R-QVO" secondAttribute="trailing" constant="8" id="lRZ-Qd-g8f"/>
                                                 <constraint firstItem="QGL-JV-UQz" firstAttribute="leading" secondItem="Ik6-w0-gM9" secondAttribute="leadingMargin" constant="16" id="wqC-9o-RyM"/>
                                                 <constraint firstItem="QGL-JV-UQz" firstAttribute="centerY" secondItem="Ik6-w0-gM9" secondAttribute="centerY" id="xs6-3O-xrc"/>
                                             </constraints>
