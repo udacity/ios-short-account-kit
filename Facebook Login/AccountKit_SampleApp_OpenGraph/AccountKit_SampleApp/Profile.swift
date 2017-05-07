@@ -22,7 +22,11 @@ internal final class Profile {
 
     /// A configuration option that will augment the facebook-fetched users
     /// with a set of hardcoded users to demonstrate the UI
-    let includeHardcodedSurfers = true
+    static let includeHardcodedSurfers = true
+
+    /// A configuration option that will augment the facebook-fetched real users
+    /// with several facebook test users created programatically as needed
+    static let includeTestUserSurfers = true
 
     init(loginType: LoginType = .none) {
         self.loginType = loginType
@@ -135,9 +139,9 @@ internal extension Profile {
     }
 
     private func loadFacebookProfileData(completion: @escaping () -> Void) {
-        OpenGraphClient.sharedInstance.fetchProfileData { [weak self, includeHardcodedSurfers] profileData in
+        OpenGraphClient.sharedInstance.fetchProfileData { [weak self] profileData in
             if let profileData = profileData {
-                if includeHardcodedSurfers {
+                if Profile.includeHardcodedSurfers {
                     profileData.friends += Surfer.Hardcoded.makeSurfers()
                 }
                 self?.update(profileData: profileData)

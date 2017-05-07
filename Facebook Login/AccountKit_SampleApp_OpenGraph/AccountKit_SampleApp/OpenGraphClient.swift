@@ -73,8 +73,18 @@ internal extension OpenGraphClient {
                     return
                 }
 
-                profileData.friends = friends
-                completion(profileData)
+                // Add the test users if we're configured to do so
+                if Profile.includeTestUserSurfers {
+                    TestUsers.makeTestUserSurfers { testUserSurfers in
+                        // Augment with test users
+                        profileData.friends = friends + testUserSurfers
+                        completion(profileData)
+                    }
+                } else {
+                    // Not using test users
+                    profileData.friends = friends
+                    completion(profileData)
+                }
             }
         }
     }

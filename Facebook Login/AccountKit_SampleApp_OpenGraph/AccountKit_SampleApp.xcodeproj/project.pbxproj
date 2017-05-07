@@ -12,6 +12,8 @@
 		0359DF921EBD374E003A17A6 /* OpenGraphClient-ProfileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359DF911EBD374E003A17A6 /* OpenGraphClient-ProfileMap.swift */; };
 		0359DF941EBD38B3003A17A6 /* AccountKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359DF931EBD38B3003A17A6 /* AccountKitClient.swift */; };
 		0359DF961EBD393A003A17A6 /* AccountKitClient-ProfileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359DF951EBD393A003A17A6 /* AccountKitClient-ProfileMap.swift */; };
+		0359DF981EBD5731003A17A6 /* OpenGraphClient-TestUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359DF971EBD5731003A17A6 /* OpenGraphClient-TestUsers.swift */; };
+		0359DF9A1EBD5833003A17A6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359DF991EBD5833003A17A6 /* Configuration.swift */; };
 		03AE46171EB8F35000D9734E /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46161EB8F35000D9734E /* Appearance.swift */; };
 		03AE46191EBA0F5A00D9734E /* FollowFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE46181EBA0F5A00D9734E /* FollowFriendsViewController.swift */; };
 		03AE461D1EBA176700D9734E /* SurfLocation-Hardcoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE461C1EBA176700D9734E /* SurfLocation-Hardcoded.swift */; };
@@ -63,6 +65,8 @@
 		0359DF911EBD374E003A17A6 /* OpenGraphClient-ProfileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OpenGraphClient-ProfileMap.swift"; sourceTree = "<group>"; };
 		0359DF931EBD38B3003A17A6 /* AccountKitClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountKitClient.swift; sourceTree = "<group>"; };
 		0359DF951EBD393A003A17A6 /* AccountKitClient-ProfileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AccountKitClient-ProfileMap.swift"; sourceTree = "<group>"; };
+		0359DF971EBD5731003A17A6 /* OpenGraphClient-TestUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OpenGraphClient-TestUsers.swift"; sourceTree = "<group>"; };
+		0359DF991EBD5833003A17A6 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		03AE46161EB8F35000D9734E /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		03AE46181EBA0F5A00D9734E /* FollowFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowFriendsViewController.swift; sourceTree = "<group>"; };
 		03AE461C1EBA176700D9734E /* SurfLocation-Hardcoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SurfLocation-Hardcoded.swift"; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				0359DF931EBD38B3003A17A6 /* AccountKitClient.swift */,
 				0359DF911EBD374E003A17A6 /* OpenGraphClient-ProfileMap.swift */,
 				0359DF951EBD393A003A17A6 /* AccountKitClient-ProfileMap.swift */,
+				0359DF971EBD5731003A17A6 /* OpenGraphClient-TestUsers.swift */,
 			);
 			name = Syncing;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			children = (
 				ED7EDDE61DEB5B5B00E62017 /* AppDelegate.swift */,
 				03AE46161EB8F35000D9734E /* Appearance.swift */,
+				0359DF991EBD5833003A17A6 /* Configuration.swift */,
 				03399B4F1EB24CDD00057C71 /* Model */,
 				03399B501EB24CED00057C71 /* View */,
 				03399B511EB24CF500057C71 /* Controller */,
@@ -408,12 +414,14 @@
 				ED7EDDE91DEB5B5B00E62017 /* LoginViewController.swift in Sources */,
 				0359DF961EBD393A003A17A6 /* AccountKitClient-ProfileMap.swift in Sources */,
 				03AF99411EA93200009B1114 /* SurfLocationsDataSource.swift in Sources */,
+				0359DF981EBD5731003A17A6 /* OpenGraphClient-TestUsers.swift in Sources */,
 				03AE46291EBA711F00D9734E /* FriendCell.swift in Sources */,
 				03AE46191EBA0F5A00D9734E /* FollowFriendsViewController.swift in Sources */,
 				03AE46251EBA2A5200D9734E /* VisitorBadge.swift in Sources */,
 				ED7EDDE71DEB5B5B00E62017 /* AppDelegate.swift in Sources */,
 				ED1F49201E440F4C00442BD4 /* UIColor+CustomColors.swift in Sources */,
 				0359DF941EBD38B3003A17A6 /* AccountKitClient.swift in Sources */,
+				0359DF9A1EBD5833003A17A6 /* Configuration.swift in Sources */,
 				ED0496D21DEE4E2300D90B9C /* AccountViewController.swift in Sources */,
 				03AF993D1EA92C2B009B1114 /* Surfer.swift in Sources */,
 				03AF993B1EA92BB9009B1114 /* SurfLocation.swift in Sources */,
