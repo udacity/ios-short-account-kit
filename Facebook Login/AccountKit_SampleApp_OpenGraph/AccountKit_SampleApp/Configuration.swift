@@ -12,5 +12,5 @@ internal struct Configuration {
     /// The app secret. This ABSOLUTELY should not be contained in an app you
     /// actually distribute, even as a string in your project that could be
     /// found
-    static let appSecret: String? = "e314637170b65be22e22cee5edccc771"
+    static let appSecret: String = ""
 }

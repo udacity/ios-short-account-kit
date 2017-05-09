@@ -16,13 +16,10 @@ internal extension OpenGraphClient {
         /// operations we will perform. We'll construct `FBSDKGraphRequest`s
         /// for the others.
         static let manager: FBSDKTestUsersManager = {
-            guard let appSecret = Configuration.appSecret else {
-                fatalError("Can't create test users – app secret not available")
-            }
             guard let appId = Bundle.main.object(forInfoDictionaryKey: "FacebookAppID") as? String else {
                 fatalError("Can't create test users - couldn't find Facebook appId")
             }
-            return FBSDKTestUsersManager.sharedInstance(forAppID: appId, appSecret: appSecret)
+            return FBSDKTestUsersManager.sharedInstance(forAppID: appId, appSecret: Configuration.appSecret)
         }()
 
         static let permissions: Set<String> = ["public_profile", "user_friends", "email"]
@@ -50,7 +47,9 @@ internal extension OpenGraphClient.TestUsers {
     ///
     private static func makeSurfers(completion: @escaping ([Surfer]) -> Void) {
         guard let primaryTestUserTokenString = primaryToken?.tokenString else {
-            fatalError("called makeSurfers() before primary token was set")
+            print("Unable to create test users. Called makeSurfers() before primary token was set.")
+            completion([])
+            return
         }
 
         // Construct a request using the primary test user's token
@@ -88,12 +87,13 @@ internal extension OpenGraphClient.TestUsers {
         // User `FBSDKTestUserManager` to fetch or create the tokens as needed
         manager.requestTestAccountTokens(withArraysOfPermissions: permissionsArray, createIfNotFound: true) { (tokens, error) in
             guard let accessTokens = tokens as? [FBSDKAccessToken], accessTokens.count > 1 else {
-                fatalError("Didn't receive tokens for test users?")
+                print("Didn't receive tokens for test users")
+                completion()
+                return
             }
             if let error = error {
                 print("Error fetching test user tokens: \(error.localizedDescription)")
                 // handle error
-                fatalError()
             }
             self.handleTestAccountsResponse(tokens: accessTokens, completion: completion)
         }
