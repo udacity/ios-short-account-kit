@@ -9,13 +9,17 @@
 import UIKit
 
 internal final class FriendCell: UITableViewCell {
-
+    // Outlets
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
 
+    // Layout constraints
     @IBOutlet weak var followButtonWidthConstraint: NSLayoutConstraint!
 
+    // The identifier of the surfer the cell was configured with. This is
+    // retained for the purpose of identifying the cell when the follow button
+    // is tapped.
     var surferIdentifier: String?
 
     weak var delegate: FriendCellDelegate?
@@ -27,48 +31,35 @@ internal final class FriendCell: UITableViewCell {
         delegate?.friendCell(self, didTapFollowWithIdentifier: identifier)
     }
 
+    // Setup
+
     func configure(with surfer: Surfer) {
         surferIdentifier = surfer.identifier
         nameLabel.text = surfer.name
-        setFollowButtonState(alreadyFollowing: surfer.following)
+        setFollowButtonState(isFollowedByUser: surfer.isFollowedByUser)
 
         // Image
         thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.width / 2
         thumbnailImageView.image = #imageLiteral(resourceName: "icon_profile-empty")
-        if let imageDescriptor = surfer.imageDescriptor {
-            loadImage(for: imageDescriptor)
-        }
+        thumbnailImageView.loadImage(for: surfer)
     }
 
-    func loadImage(for imageDescriptor: Surfer.ImageDescriptor) {
-        switch imageDescriptor {
-        case let .hardcoded(name):
-            thumbnailImageView.image = UIImage(named: name)
-        case let .remote(urlString):
-            ImageLoader.sharedInstance.load(url: urlString) { [weak self] image in
-                if let image = image {
-                    self?.thumbnailImageView.image = image
-                }
-            }
-        }
-    }
-
-    func setFollowButtonState(alreadyFollowing: Bool) {
+    func setFollowButtonState(isFollowedByUser: Bool) {
         let attributes: [String: Any] = [
             NSFontAttributeName: Appearance.Fonts.buttonLabel,
             NSForegroundColorAttributeName: UIColor.white,
             NSKernAttributeName: 2
         ]
-        let text = alreadyFollowing ? "UNFOLLOW" : "FOLLOW"
+        let text = isFollowedByUser ? "UNFOLLOW" : "FOLLOW"
         let attributedText = NSAttributedString(string: text, attributes: attributes)
 
         followButton.setAttributedTitle(attributedText, for: .normal)
-        followButton.backgroundColor = alreadyFollowing ? Appearance.Colors.blueGray : Appearance.Colors.green
-        followButtonWidthConstraint.constant = alreadyFollowing ? 116 : 100
+        followButton.backgroundColor = isFollowedByUser ? Appearance.Colors.blueGray : Appearance.Colors.green
+        followButtonWidthConstraint.constant = isFollowedByUser ? 116 : 100
     }
 }
 
 protocol FriendCellDelegate: class {
-    ///
+    /// Informs the delegate that the follow button was tapped
     func friendCell(_ cell: FriendCell, didTapFollowWithIdentifier identifier: String)
 }

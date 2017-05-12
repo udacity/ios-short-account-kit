@@ -8,7 +8,9 @@
 
 import UIKit
 
-internal struct SurfLocation {
+// A surf location
+
+internal final class SurfLocation {
     /// The user-visible name for the location
     internal let name: String
 
@@ -16,10 +18,25 @@ internal struct SurfLocation {
     internal let conditions: Conditions
 
     /// The identifiers of people visiting this location
-    internal let visitors: [String]
+    internal var visitors: [String]
 
     /// The name of an image for the location
     internal let imageName: String
+
+    init(name: String, conditions: Conditions, imageName: String, visitors: [String] = []) {
+        self.name = name
+        self.conditions = conditions
+        self.imageName = imageName
+        self.visitors = visitors
+    }
+
+    func add(surfer: Surfer) {
+        visitors.append(surfer.identifier)
+    }
+
+    func add(surfers: [Surfer]) {
+        visitors.append(contentsOf: surfers.map({ $0.identifier }))
+    }
 }
 
 // MARK: - Conditions
@@ -27,9 +44,7 @@ internal struct SurfLocation {
 extension SurfLocation {
     /// Describes the conditions at a `SurfLocation`
     internal enum Conditions {
-        case good
-        case fair
-        case poor
+        case good, fair, poor
     }
 }
 

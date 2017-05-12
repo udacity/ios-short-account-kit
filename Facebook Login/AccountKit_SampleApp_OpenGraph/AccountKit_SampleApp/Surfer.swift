@@ -6,36 +6,61 @@
 //  Copyright © 2017 Gabrielle Miller-Messner. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-// This is a simple struct that describes another user that the current user
-// is connected to via a social graph. In this example we only track the
-// name, profileImage and whether or not the surfer is tracking the current
-// user.
+// A surfer is a minimal class that describes another user of the system that
+// the logged-in user is connected with via a social graph.
 
 /// A simple struct describing another surfer
-internal struct Surfer {
+internal final class Surfer {
     let identifier: String
 
     /// The surfer's full name
     let name: String
 
-    /// To bootstrap our example, we include a number of hardcoded users with
-    /// hardcoded profile images. The `imageDescriptor` holds either a `real`
-    /// remote image URL, or a hardcoded image name
-    let imageDescriptor: ImageDescriptor?
+    /// The `SurferType` (real facebook user, test facebook user, or hardcoded)
+    let surferType: SurferType
 
-    /// Indicates if this Surfer is following the current user.
-    var following = false
+    /// An URL for the user's profile image, if available
+    let imageUrl: String?
 
-    /// A flag indicating this is a fake user account
-    let fakeAccount: Bool
+    /// An image for the user, if available
+    var image: UIImage?
+
+    /// Indicates if the Surfer is being followd by the logged-in user
+    var isFollowedByUser: Bool
+
+    init(identifier: String, name: String, surferType: SurferType, imageUrl: String? = nil, image: UIImage? = nil, isFollowedByUser: Bool = false) {
+        self.identifier = identifier
+        self.name = name
+        self.surferType = surferType
+        self.imageUrl = imageUrl
+        self.image = image
+        self.isFollowedByUser = isFollowedByUser
+    }
+
+    enum SurferType { case facebookUser, facebookTestUser, hardcoded }
 }
 
+// -----------------------------------------------------------------------------
+// MARK: - Image loading
+
 internal extension Surfer {
-    /// Describes a hardcoded (fake) image name or remote (real) image URL
-    enum ImageDescriptor {
-        case hardcoded(String) // Local image name
-        case remote(String) // URL string
+    /// Returns `true` if the `Surfer` has no `image`, but has an `imageUrl`
+    var readyToLoadImage: Bool { return image == nil && imageUrl != nil }
+
+    /// Loads the Surfer's profile image if an URL is set and the image is not
+    /// already loaded
+    func loadImage(completion: @escaping (UIImage?) -> Void) {
+        guard let imageUrl = imageUrl else {
+            print("Can't load image – no image URL is set")
+            return
+        }
+        ImageLoader.sharedInstance.load(url: imageUrl) { image in
+            if let image = image {
+                self.image = image
+            }
+            DispatchQueue.main.async { completion(image) }
+        }
     }
 }

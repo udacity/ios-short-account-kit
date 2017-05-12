@@ -343,7 +343,7 @@
                                                         <constraint firstAttribute="width" constant="48" id="uHg-yE-vHh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tyler Jenkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prV-3R-QVO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="Tyler Jenkins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prV-3R-QVO">
                                                     <rect key="frame" x="88" y="29" width="96" height="22"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.38039215686274508" green="0.44705882352941173" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
@@ -355,6 +355,7 @@
                                                 <constraint firstItem="prV-3R-QVO" firstAttribute="leading" secondItem="QGL-JV-UQz" secondAttribute="trailing" constant="16" id="IGA-uP-V7s"/>
                                                 <constraint firstItem="Elu-oy-JUL" firstAttribute="centerY" secondItem="Ik6-w0-gM9" secondAttribute="centerY" id="Of2-ha-uD2"/>
                                                 <constraint firstItem="prV-3R-QVO" firstAttribute="centerY" secondItem="Ik6-w0-gM9" secondAttribute="centerY" id="SxO-bW-8zj"/>
+                                                <constraint firstItem="Elu-oy-JUL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="prV-3R-QVO" secondAttribute="trailing" constant="8" id="lRZ-Qd-g8f"/>
                                                 <constraint firstItem="QGL-JV-UQz" firstAttribute="leading" secondItem="Ik6-w0-gM9" secondAttribute="leadingMargin" constant="16" id="wqC-9o-RyM"/>
                                                 <constraint firstItem="QGL-JV-UQz" firstAttribute="centerY" secondItem="Ik6-w0-gM9" secondAttribute="centerY" id="xs6-3O-xrc"/>
                                             </constraints>
@@ -405,7 +406,7 @@
                         <viewControllerLayoutGuide type="top" id="djA-Yi-dtQ"/>
                         <viewControllerLayoutGuide type="bottom" id="to7-71-YNk"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="T9t-ag-Irx">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="T9t-ag-Irx">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -526,6 +527,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-W8-y9d">
+                                <rect key="frame" x="189" y="318" width="37" height="37"/>
+                                <color key="color" red="0.0084500350058078766" green="0.76744645833969116" blue="0.68722909688949585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -534,11 +539,14 @@
                             <constraint firstAttribute="trailing" secondItem="FR1-oG-aI9" secondAttribute="trailing" id="FSU-mL-hmI"/>
                             <constraint firstItem="FR1-oG-aI9" firstAttribute="leading" secondItem="T9t-ag-Irx" secondAttribute="leading" id="YhZ-KR-qHD"/>
                             <constraint firstItem="FR1-oG-aI9" firstAttribute="top" secondItem="EHm-Xq-LQq" secondAttribute="bottom" id="csm-Gz-av1"/>
+                            <constraint firstItem="Fzy-W8-y9d" firstAttribute="centerY" secondItem="T9t-ag-Irx" secondAttribute="centerY" id="laV-E9-Qfn"/>
+                            <constraint firstItem="Fzy-W8-y9d" firstAttribute="centerX" secondItem="T9t-ag-Irx" secondAttribute="centerX" id="r6F-3s-b3E"/>
                             <constraint firstItem="EHm-Xq-LQq" firstAttribute="top" secondItem="T9t-ag-Irx" secondAttribute="top" id="rpP-Ke-vb5"/>
                             <constraint firstAttribute="trailing" secondItem="EHm-Xq-LQq" secondAttribute="trailing" id="sB3-hD-huy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Where are you headed?" id="ubm-x6-dxO">
+                        <barButtonItem key="backBarButtonItem" title="  " id="c9q-yQ-geZ"/>
                         <barButtonItem key="leftBarButtonItem" width="32" id="umb-PI-r2G">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7Ok-Mr-I6C">
                                 <rect key="frame" x="20" y="7" width="32" height="30"/>
@@ -563,6 +571,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="accountButton" destination="FMA-QM-W2h" id="JMq-es-3nW"/>
+                        <outlet property="activityIndicator" destination="Fzy-W8-y9d" id="sSb-lI-vo0"/>
                         <outlet property="setLocationButton" destination="pEx-Pt-Tfd" id="GSi-0i-xkU"/>
                         <outlet property="setLocationTextField" destination="Fq9-ud-OE8" id="Aly-xD-kKM"/>
                         <outlet property="tableView" destination="FR1-oG-aI9" id="bT4-jr-UyN"/>
