@@ -16,8 +16,7 @@ internal final class SurfLocationsViewController: UIViewController {
     @IBOutlet weak var setLocationTextField: UITextField!
     @IBOutlet weak var setLocationButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
-    var shareButton: FBSDKShareButton?
+    @IBOutlet weak var shareButton: UIButton!
 
     var profile: Profile!
 
@@ -36,6 +35,8 @@ internal final class SurfLocationsViewController: UIViewController {
             button.layer.cornerRadius = button.bounds.size.width / 2
             button.clipsToBounds = true
         }
+
+        shareButton.layer.cornerRadius = 4
 
         navigationItem.leftBarButtonItem?.customView?.isHidden = !profile.isFacebookLogin
 
@@ -73,10 +74,12 @@ internal extension SurfLocationsViewController {
     }
 
     @IBAction func shareLocationButtonTapped(sender: UIButton) {
-        guard let content = shareButton?.shareContent else {
-            fatalError()
-        }
-        FBSDKShareDialog.show(from: self, with: content, delegate: nil)
+        // Placeholder content - should be configured for the actual surf location
+        let photo = FBSDKSharePhoto(image: #imageLiteral(resourceName: "imageBolinas"), userGenerated: false)!
+        let photoContent = FBSDKSharePhotoContent()
+        photoContent.photos = [photo]
+
+        FBSDKShareDialog.show(from: self, with: photoContent, delegate: nil)
     }
 
     // Helpers
@@ -93,28 +96,7 @@ internal extension SurfLocationsViewController {
     }
 
     func updateShareButton(visible: Bool) {
-        if !visible {
-            shareButton?.removeFromSuperview()
-            shareButton = nil
-            return
-        }
-
-        // Set up share button
-        let containingView = self.setLocationButton.superview!
-
-        let photo = FBSDKSharePhoto(image: #imageLiteral(resourceName: "imageOceanBeach"), userGenerated: false)!
-        let photoContent = FBSDKSharePhotoContent()
-        photoContent.photos = [photo]
-
-        let button = FBSDKShareButton()
-        button.addTarget(self, action: #selector(shareLocationButtonTapped(sender:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.shareContent = photoContent
-
-        containingView.addSubview(button)
-        self.shareButton = button
-        button.centerYAnchor.constraint(equalTo: setLocationButton.centerYAnchor).isActive = true
-        button.rightAnchor.constraint(equalTo: containingView.rightAnchor, constant: -18).isActive = true
+        shareButton.isHidden = !visible
     }
 }
 
