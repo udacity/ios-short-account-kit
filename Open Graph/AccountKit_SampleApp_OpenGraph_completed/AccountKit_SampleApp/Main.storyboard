@@ -51,13 +51,13 @@
                                 <rect key="frame" x="20" y="20" width="374" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJK-Fc-07G">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="173"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="173.33333333333334"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-7t-d6a">
-                                        <rect key="frame" x="0.0" y="193" width="374" height="96"/>
+                                        <rect key="frame" x="0.0" y="193.33333333333331" width="374" height="95.333333333333314"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="logoSurfConnect" translatesAutoresizingMaskIntoConstraints="NO" id="Tdx-2s-Xrg">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="54.999999999999972"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="Pmf-FL-G5L">
                                                         <variation key="heightClass=compact" constant="40"/>
@@ -65,7 +65,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="SURF CONNECT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0f-8l-axe">
-                                                <rect key="frame" x="0.0" y="68" width="374" height="28"/>
+                                                <rect key="frame" x="0.0" y="67.999999999999972" width="374" height="27.333333333333371"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4su-aT-BkZ">
-                                        <rect key="frame" x="0.0" y="309" width="374" height="213"/>
+                                        <rect key="frame" x="0.0" y="308.66666666666674" width="374" height="213.33333333333326"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uH3-Q1-4fr">
@@ -172,7 +172,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Namey McNamerson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjT-8M-qdh">
-                                        <rect key="frame" x="99" y="156" width="216" height="27"/>
+                                        <rect key="frame" x="99.333333333333343" y="156" width="215.66666666666666" height="27"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -203,7 +203,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="317-Vj-sxT">
-                                <rect key="frame" x="20" y="274" width="374" height="168"/>
+                                <rect key="frame" x="20" y="274" width="374" height="166"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPq-aa-UE1">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -213,32 +213,32 @@
                                         </constraints>
                                     </view>
                                     <label hidden="YES" autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Account ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJn-4U-LIR">
-                                        <rect key="frame" x="0.0" y="32" width="374" height="20"/>
+                                        <rect key="frame" x="0.0" y="32" width="374" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                         <color key="textColor" red="0.49019607843137253" green="0.59215686274509804" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="accountId" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKb-e5-ao6">
-                                        <rect key="frame" x="0.0" y="60" width="374" height="20"/>
+                                        <rect key="frame" x="0.0" y="59.333333333333314" width="374" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.3803921569" green="0.44705882349999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dde-Cx-3aA">
-                                        <rect key="frame" x="0.0" y="88" width="374" height="24"/>
+                                        <rect key="frame" x="0.0" y="87.333333333333314" width="374" height="24"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="LBS-hT-k6Z"/>
                                         </constraints>
                                     </view>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaB-67-I8p">
-                                        <rect key="frame" x="0.0" y="120" width="374" height="20"/>
+                                        <rect key="frame" x="0.0" y="119.33333333333331" width="374" height="19.333333333333371"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                         <color key="textColor" red="0.49019607840000001" green="0.59215686270000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dv2-nI-Ugx">
-                                        <rect key="frame" x="0.0" y="148" width="374" height="20"/>
+                                        <rect key="frame" x="0.0" y="146.66666666666669" width="374" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.3803921569" green="0.44705882349999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -318,7 +318,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UgD-Bl-n94" id="Ik6-w0-gM9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-oy-JUL">
@@ -406,7 +406,7 @@
                         <viewControllerLayoutGuide type="top" id="djA-Yi-dtQ"/>
                         <viewControllerLayoutGuide type="bottom" id="to7-71-YNk"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="T9t-ag-Irx">
+                    <view key="view" contentMode="scaleToFill" id="T9t-ag-Irx">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -436,6 +436,23 @@
                                             <action selector="setLocationButtonTappedWithSender:" destination="dyp-bg-3hO" eventType="touchUpInside" id="Ecq-cz-FAv"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Bg-Jx-11S" userLabel="Share button">
+                                        <rect key="frame" x="326" y="15" width="70" height="30"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34509803921568627" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="2xn-BW-oCa"/>
+                                            <constraint firstAttribute="width" constant="70" id="66J-uP-pcI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
+                                        <state key="normal" title="Share" image="fb_icon_white">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareLocationButtonTappedWithSender:" destination="dyp-bg-3hO" eventType="touchUpInside" id="s6R-GM-qlN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.85490196078431369" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -446,6 +463,8 @@
                                     <constraint firstItem="Fq9-ud-OE8" firstAttribute="leading" secondItem="EHm-Xq-LQq" secondAttribute="leading" constant="16" id="E4W-zh-Y3o"/>
                                     <constraint firstAttribute="bottom" secondItem="Fq9-ud-OE8" secondAttribute="bottom" constant="8" id="FX6-JA-Gu5"/>
                                     <constraint firstAttribute="height" constant="60" id="P5I-9D-PxX"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Bg-Jx-11S" secondAttribute="trailing" constant="18" id="e1j-YZ-mYB"/>
+                                    <constraint firstItem="0Bg-Jx-11S" firstAttribute="centerY" secondItem="EHm-Xq-LQq" secondAttribute="centerY" id="tv1-di-zVy"/>
                                     <constraint firstItem="pEx-Pt-Tfd" firstAttribute="leading" secondItem="Fq9-ud-OE8" secondAttribute="leading" constant="25" id="vft-g1-z4t"/>
                                 </constraints>
                             </view>
@@ -574,6 +593,7 @@
                         <outlet property="activityIndicator" destination="Fzy-W8-y9d" id="sSb-lI-vo0"/>
                         <outlet property="setLocationButton" destination="pEx-Pt-Tfd" id="GSi-0i-xkU"/>
                         <outlet property="setLocationTextField" destination="Fq9-ud-OE8" id="Aly-xD-kKM"/>
+                        <outlet property="shareButton" destination="0Bg-Jx-11S" id="1K5-C2-3PY"/>
                         <outlet property="tableView" destination="FR1-oG-aI9" id="bT4-jr-UyN"/>
                     </connections>
                 </viewController>
@@ -584,6 +604,7 @@
     </scenes>
     <resources>
         <image name="bgWave" width="375" height="667"/>
+        <image name="fb_icon_white" width="14" height="14"/>
         <image name="icon_add_friends" width="30" height="24"/>
         <image name="icon_profile-empty" width="100" height="100"/>
         <image name="logoSurfConnect" width="62" height="55"/>
