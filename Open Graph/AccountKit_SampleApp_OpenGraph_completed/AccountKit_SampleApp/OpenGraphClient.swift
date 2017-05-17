@@ -21,7 +21,11 @@ internal final class OpenGraphClient {
 
 fileprivate extension OpenGraphClient {
     enum FieldType: String {
-        case id, name, email, picture, friends
+        case id = "id"
+        case name = "name"
+        case email = "email"
+        case picture = "picture.width(300).height(300)"
+        case friends = "friends"
     }
 }
 

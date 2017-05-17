@@ -51,16 +51,6 @@ final class LoginViewController: UIViewController {
         surfConnectLabel.addTextSpacing(4.0)
     
         // Facebook Login
-        
-        // Create the login button
-        let loginButton = FBSDKLoginButton()
-        loginButton.center = view.center
-        loginButton.delegate = self
-        loginButton.readPermissions = ["public_profile"]
-        loginButton.loginBehavior = .systemAccount
-        view.addSubview(loginButton)
-
-        // Check if the user is already logged in
 
         // Check if user is logged in
         if let fbToken = FBSDKAccessToken.current() {
@@ -112,7 +102,24 @@ final class LoginViewController: UIViewController {
             }
         }
     }
-        
+    
+    // Facebook Login
+    @IBAction func loginWithFacebook(_ sender: Any) {
+        let readPermissions = ["public_profile"]
+        let loginManager = FBSDKLoginManager()
+        loginManager.logIn(withReadPermissions: readPermissions, from: self) { (result, error) in
+            if let error = error {
+                print("login failed with error: \(error)")
+            } else if (result?.isCancelled)! {
+                print("login cancelled")
+            } else if let result = result {
+                //present the Surf locations view controller
+                self.profile = Profile(token: result.token)
+                self.presentWithSegueIdentifier(.showSurfLocations,animated: true)
+            }
+        }
+    }
+    
     // MARK: Helper Functions
 
     private func restoreExistingLoginState() {
@@ -178,29 +185,5 @@ extension LoginViewController: AKFViewControllerDelegate {
     
     func viewController(_ viewController: UIViewController, didFailWithError error: Error!) {
         print("\(viewController) did fail with error: \(error)")
-    }
-}
-
-// MARK: - LoginViewController: FBSDKLoginButtonDelegate
-
-extension LoginViewController: FBSDKLoginButtonDelegate {
-
-    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if let error = error {
-            print("Login failed with error: \(error)")
-            return
-        }
-
-        // The FBSDKAccessToken is expected to be available, so we can navigate
-        // to the account view controller
-        if let result = result {
-            profile = Profile(token: result.token)
-            showSurfLocations()
-        }
-    }
-
-    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        profile = Profile()
-        // On logout, we just remain on the login view controller
     }
 }
