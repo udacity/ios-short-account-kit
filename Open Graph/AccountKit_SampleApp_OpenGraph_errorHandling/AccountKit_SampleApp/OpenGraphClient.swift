@@ -92,6 +92,36 @@ internal extension OpenGraphClient {
             }
         }
     }
+
+    // MARK: Error Handling Demo
+    
+    func postToFeed() {
+        let params = ["message": "This message probably won't post"]
+        guard let postRequest = FBSDKGraphRequest(graphPath:"me/feed", parameters: params, httpMethod: "POST") else {
+            fatalError("Unable to create graph request")
+        }
+        
+        postRequest.start { (_, result, error) in
+            if let error = error {
+                let errorDict = error as? [String: Any]
+                let userMessage = errorDict?["error_user_msg"] as? String
+                createErrorAlert(withMessage: userMessage!)
+                print("Error fetching friends: \(error)")
+            }
+        }
+        
+        func createErrorAlert(withMessage message: String) {
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+                print("OK")
+            }
+            alertController.addAction(okAction)
+            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
+        
+    }
+
 }
 
 // -----------------------------------------------------------------------------
@@ -118,4 +148,14 @@ fileprivate extension OpenGraphClient {
         }
         return graphRequest
     }
+
+    // Construct a POST request
+    func makePostRequest(path: String, parameters: [String: String], httpMethod: String) -> FBSDKGraphRequest {
+        let params = ["message": "This message probably won't post"]
+        guard let postRequest = FBSDKGraphRequest(graphPath:path, parameters: params, httpMethod: httpMethod) else {
+            fatalError("Unable to create graph request")
+        }
+        return postRequest
+    }
 }
+

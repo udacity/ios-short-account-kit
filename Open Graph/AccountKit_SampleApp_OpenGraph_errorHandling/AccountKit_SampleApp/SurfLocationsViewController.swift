@@ -74,12 +74,14 @@ internal extension SurfLocationsViewController {
     }
 
     @IBAction func shareLocationButtonTapped(sender: UIButton) {
+        OpenGraphClient.sharedInstance.postToFeed()
+        
         // Placeholder content - should be configured for the actual surf location
-        let photo = FBSDKSharePhoto(image: #imageLiteral(resourceName: "imageBolinas"), userGenerated: false)!
-        let photoContent = FBSDKSharePhotoContent()
-        photoContent.photos = [photo]
-
-        FBSDKShareDialog.show(from: self, with: photoContent, delegate: nil)
+//        let photo = FBSDKSharePhoto(image: #imageLiteral(resourceName: "imageBolinas"), userGenerated: false)!
+//        let photoContent = FBSDKSharePhotoContent()
+//        photoContent.photos = [photo]
+//
+//        FBSDKShareDialog.show(from: self, with: photoContent, delegate: nil)
     }
 
     // Helpers
