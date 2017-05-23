@@ -18,10 +18,13 @@ internal final class OpenGraphClient {
 
 // -----------------------------------------------------------------------------
 // MARK: - Fetching open graph content
-
 fileprivate extension OpenGraphClient {
     enum FieldType: String {
-        case id, name, email, picture, friends
+        case id = "id"
+        case name = "name"
+        case email = "email"
+        case picture = "picture.width(340).height(340)"
+        case friends = "friends"
     }
 }
 
@@ -38,17 +41,7 @@ internal extension OpenGraphClient {
     }
 
     /// Uses the Open Graph SDK for fetch friends for the logged in user
-    func fetchProfileFriends(completion: @escaping ([[String: Any]]?, Error?) -> Void) {
-        let graphRequest = makeGraphRequest(path: "me/friends", fields: [.id, .name, .picture])
-        graphRequest.start { (_, result, error) in
-            if let error = error {
-                print("Error fetching friends: \(error)")
-            }
-            let resultDict = result as? [String: Any]
-            let friendDicts = resultDict?["data"] as? [[String: Any]]
-            completion(friendDicts, error)
-        }
-    }
+
 }
 
 // -----------------------------------------------------------------------------
@@ -64,32 +57,13 @@ internal extension OpenGraphClient {
                 completion(nil)
                 return
             }
-
-            // Fill in the friend data
-            self.fetchProfileFriends { (result, error) in
-                guard let friends = result.flatMap(ProfileMap.makeFacebookSurfers) else {
-                    // No additional friend data
-                    completion(profileData)
-                    return
-                }
-
-                // Add the test users if we're configured to do so
-                if Profile.includeTestUserSurfers {
-                    TestUsers.makeTestUserSurfers { testUserSurfers in
-                        // Augment with test users
-                        profileData.friends = friends + testUserSurfers
-                        completion(profileData)
-                    }
-                } else {
-                    // Not using test users
-                    profileData.friends = friends
-                    completion(profileData)
-                }
-            }
+            
+            //Fill in the friend data
+            
+            completion(profileData)
         }
     }
 }
-
 // -----------------------------------------------------------------------------
 // MARK: - Logout
 
