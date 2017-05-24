@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -180,13 +181,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anytown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emQ-hM-6e9">
-                                        <rect key="frame" x="186" y="94" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.38039215686274508" green="0.44705882352941173" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -281,14 +275,13 @@
                         <outlet property="accountIDTitleLabel" destination="NJn-4U-LIR" id="q1a-h4-jye"/>
                         <outlet property="imageView" destination="lwh-tW-XI0" id="TQf-Iu-ic5"/>
                         <outlet property="nameLabel" destination="gjT-8M-qdh" id="MZX-DT-Mab"/>
-                        <outlet property="residenceLabel" destination="emQ-hM-6e9" id="ROK-Fq-10J"/>
                         <outlet property="titleLabel" destination="GaB-67-I8p" id="Rh8-tQ-stb"/>
                         <outlet property="valueLabel" destination="dv2-nI-Ugx" id="EMA-IC-0vm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aP3-NF-zdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="569.56521739130437" y="742.66304347826087"/>
+            <point key="canvasLocation" x="569.56521739130437" y="741.84782608695662"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="23N-va-7J8">

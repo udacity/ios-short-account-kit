@@ -40,16 +40,18 @@ internal final class SurfLocationsViewController: UIViewController {
 
         navigationItem.leftBarButtonItem?.customView?.isHidden = !profile.isFacebookLogin
 
-        if !profile.isDataLoaded {
-            profile.loadProfileData {
-                let locations = SurfLocation.Hardcoded.makeLocations(for: self.profile)
-                self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: locations)
-                self.tableView.dataSource = self.dataSource
-                self.reloadData()
-                // Fetch the profile image now that we have an URL
-                self.updateAccountButton()
-            }
-        }
+        //TODO: Uncomment below
+
+//        if !profile.isDataLoaded {
+//            profile.loadProfileData {
+//                let locations = SurfLocation.Hardcoded.makeLocations(for: self.profile)
+//                self.dataSource = SurfLocationsDataSource(profile: self.profile, locations: locations)
+//                self.tableView.dataSource = self.dataSource
+//                self.reloadData()
+//                // Fetch the profile image now that we have an URL
+//                self.updateAccountButton()
+//            }
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

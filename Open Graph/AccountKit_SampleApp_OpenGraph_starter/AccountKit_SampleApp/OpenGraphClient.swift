@@ -23,7 +23,7 @@ fileprivate extension OpenGraphClient {
         case id = "id"
         case name = "name"
         case email = "email"
-        case picture = "picture.width(340).height(340)"
+        case picture = "picture"
         case friends = "friends"
     }
 }
@@ -31,13 +31,8 @@ fileprivate extension OpenGraphClient {
 internal extension OpenGraphClient {
     /// Uses the Open Graph SDK to fetch profile data for the logged in user
     func fetchProfileDictionary(completion: @escaping ([String: Any]?, Error?) -> Void) {
-        let graphRequest = makeGraphRequest(path: "me", fields: [.id, .name, .email, .picture])
-        graphRequest.start { (_, result, error) in
-            if let error = error {
-                print("Error fetching facebook user data: \(error)")
-            }
-            completion(result as? [String: Any], error)
-        }
+
+        // TODO: Complete method implementation
     }
 
     /// Uses the Open Graph SDK for fetch friends for the logged in user
@@ -50,18 +45,19 @@ internal extension OpenGraphClient {
 internal extension OpenGraphClient {
     /// Returns a `FacebookProfileData` object including friend data
     func fetchProfileData(completion: @escaping (Profile.FacebookProfileData?) -> Void) {
+       // TODO: Uncomment below
         // Fetch profile data
-        fetchProfileDictionary { (dictionary, _) in
-            guard let profileData = dictionary.flatMap(ProfileMap.makeProfileData) else {
-                // No profile data
-                completion(nil)
-                return
-            }
-            
-            //Fill in the friend data
-            
-            completion(profileData)
-        }
+//        fetchProfileDictionary { (dictionary, _) in
+//            guard let profileData = dictionary.flatMap(ProfileMap.makeProfileData) else {
+//                // No profile data
+//                completion(nil)
+//                return
+//            }
+//            
+//            //Fill in the friend data
+//            
+//            completion(profileData)
+//        }
     }
 }
 // -----------------------------------------------------------------------------
@@ -78,14 +74,6 @@ internal extension OpenGraphClient {
 
 fileprivate extension OpenGraphClient {
     /// Construct a graph request
-    func makeGraphRequest(path: String, fields: [FieldType]) -> FBSDKGraphRequest {
-        let fieldsString = fields
-            .map { $0.rawValue }
-            .joined(separator: ",")
+    // TODO: Add makeGraphRequest() method here!
 
-        guard let graphRequest = FBSDKGraphRequest(graphPath: path, parameters: ["fields" : fieldsString]) else {
-            fatalError("Unable to create graph request")
-        }
-        return graphRequest
-    }
 }

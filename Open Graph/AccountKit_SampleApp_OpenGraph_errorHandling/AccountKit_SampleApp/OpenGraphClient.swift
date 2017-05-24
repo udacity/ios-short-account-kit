@@ -102,27 +102,50 @@ internal extension OpenGraphClient {
         }
         
         postRequest.start { (_, result, error) in
-            if let error = error {
-                let errorDict = error as? [String: Any]
-                let userMessage = errorDict?["error_user_msg"] as? String
-                createErrorAlert(withMessage: userMessage!)
-                print("Error fetching friends: \(error)")
+            if let error = error as NSError? {
+                let errorDict = error.userInfo
+                let errorCode = errorDict[FBSDKGraphRequestErrorGraphErrorCode] as? Int64
+                
+                if errorCode == 200 {
+                    self.requestMorePermissions()
+                }
+                
+                print("Error posting to feed: \(error)")
             }
         }
-        
-        func createErrorAlert(withMessage message: String) {
-            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-                (result : UIAlertAction) -> Void in
-                print("OK")
-            }
-            alertController.addAction(okAction)
-            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func createErrorAlert(withMessage message: String) {
+        let alertController = UIAlertController(title: "Something is Amiss", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            (result : UIAlertAction) -> Void in
+            print("OK")
         }
-        
+        alertController.addAction(okAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
 
+func requestMorePermissions() {
+    let fbLoginManager: FBSDKLoginManager = FBSDKLoginManager()
+    let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+    
+    fbLoginManager.logIn(withPublishPermissions: ["publish_actions"], from: rootViewController) { (result, error) in
+        
+        if let error = error {
+            print("Login failed with error: \(error)")
+        } else if (result?.isCancelled)!{
+            //Handle cancellation
+        } else {
+            let grantedPermissions = result?.grantedPermissions
+            
+            // Request the data you have been granted permission to access
+        }
+    }
 }
+
+}
+
+
 
 // -----------------------------------------------------------------------------
 // MARK: - Logout
